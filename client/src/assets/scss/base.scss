@@ -1,0 +1,26 @@
+@import "queryMixins";
+@import "header";
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*{
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.container{
+  max-width: 75%;
+  margin: 0 auto;
+}
+.hidden{
+  display: none;
+}
+
+
+@include responsive($phone){
+  .container{
+    max-width: 95%;
+  }
+}

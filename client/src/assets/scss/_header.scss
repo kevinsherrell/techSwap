@@ -1,0 +1,242 @@
+nav .overlay {
+  background-color: #687F9E;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
+nav {
+  //background-color: pink;
+  box-shadow: 2px 0px 11px gray;
+}
+
+.navForm {
+  .container {
+    padding-top: 10px;
+    max-width: 95%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  input {
+    height: 2em;
+    //width: 100%;
+    border: none;
+    border-radius: 7px;
+    flex-direction: column;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #687F9E;
+  }
+
+  .navSearchWrapper {
+    position: relative;
+    width: 80%;
+    //overflow: hidden;
+    img {
+      opacity: 40%;
+      position: absolute;
+      top: 3px;
+      left: 10px;
+      width: 20px;
+    }
+  }
+
+  .navSearch {
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #ECECEC;
+    padding-left: 40px;
+  }
+
+  .hamburgerWrapper {
+    width: 10%;
+    text-align: right;
+  }
+
+  .topSearchMenu {
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  .bottomSearchMenu {
+    //display: flex;
+    display: none;
+  }
+}
+
+// SEARCH MENU
+.navForm .searchMenuTrue {
+  flex-direction: column;
+
+  .navSearchWrapper {
+    width: 100%;
+  }
+
+  .navLocationWrapper {
+    width: 100%;
+
+    .navSearchLocation {
+      width: 100%;
+      padding-left: 40px;
+      background-color: #ECECEC;
+    }
+  }
+
+  .navLocationWrapper {
+    position: relative;
+    width: 100%;
+    //overflow: hidden;
+    img {
+      opacity: 40%;
+      position: absolute;
+      top: 3px;
+      left: 10px;
+      width: 20px;
+    }
+  }
+
+  .mobileSearchTop {
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+  }
+
+  .logo {
+    text-align: left;
+    color: white;
+    padding-bottom: 5px;
+  }
+
+  .closeImageWrapper {
+    width: 5%;
+    margin-left: auto;
+  }
+
+  .closeImage {
+    width: 24px;
+  }
+
+  .searchMenuControls {
+    padding-top: 15px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    button {
+      font-size: 16px;
+      color: inherit;
+      border: none;
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    button:last-child {
+      margin-left: auto;
+    }
+  }
+
+  .searchMenuFilterOn {
+    display: initial;
+  }
+
+  .filterOptions {
+    height: 0px;
+    color: white;
+    padding-top: 15px;
+    z-index: 1;
+
+    p {
+      width: 50%;
+      text-align: left;
+    }
+
+    .price {
+      display: flex;
+
+
+      .priceInput {
+        display: flex;
+        width: 50%;
+
+        p {
+          width: 20%;
+          text-align: center;
+        }
+      ;
+
+        input {
+          width: 40%;
+          border: none;
+          border-radius: 0px;
+          background-color: rgba(0, 0, 0, 0);
+          border-bottom: 1px solid white;
+          color: white;
+
+        }
+
+        input::placeholder {
+          color: white;
+          text-align: center;
+          opacity: .5;
+        }
+      }
+    }
+
+    .distance {
+      display: flex;
+      padding-top: 10px;
+    }
+
+    .distanceInput {
+      display: flex;
+      justify-content: flex-end;
+      width: 61%;
+
+      p {
+        text-align: right;
+        width: 10%;
+        margin-left: 10px;
+      }
+
+      input {
+        color: white;
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+        border-bottom: 1px solid white;
+        border-radius: 0px;
+
+      }
+
+      input::placeholder {
+        color: white;
+        opacity: .4;
+      }
+    }
+
+    .sortBy {
+      padding-top: 15px;
+      display: flex;
+      p {
+        width: 60%
+      }
+
+      select {
+        width: 40%
+      }
+
+    }
+    button{
+      font-size: 16px;
+      margin-top: 10px;
+      display: block;
+      color: inherit;
+      background-color: rgba(0,0,0,0);
+      border: none;
+      margin-left: auto;
+    }
+  }
+}
