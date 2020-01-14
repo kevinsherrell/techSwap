@@ -163,6 +163,9 @@ nav {
       border: none;
       margin-left: auto; }
 
+nav {
+  color: red; }
+
 * {
   font-family: 'Roboto', sans-serif;
   list-style-type: none;
