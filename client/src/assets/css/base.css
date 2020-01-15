@@ -2,36 +2,141 @@ nav {
   box-shadow: 2px -5px 11px gray;
   padding-top: 10px;
   padding-bottom: 10px; }
-
-nav .grid {
-  grid-template-columns: 1fr 8fr .5fr; }
-  nav .grid h3 {
+  nav .grid {
+    grid-template-columns: 1fr 8fr .5fr; }
+    nav .grid i {
+      font-size: 25px;
+      align-self: center; }
+  nav h3 {
     margin-right: 15px;
     align-self: center;
     color: #687F9E; }
-  nav .grid .navForm {
+  nav .navForm {
     width: 95%;
     justify-content: center; }
-  nav .grid .navSearch {
-    position: relative;
+
+.searchInput, .locationInput {
+  position: relative;
+  width: 100%; }
+  .searchInput img, .locationInput img {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 20px;
+    opacity: 30%; }
+  .searchInput input, .locationInput input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ECECEC;
+    padding-left: 40px; }
+
+.searchMenu {
+  color: white;
+  position: absolute;
+  top: 0;
+  padding-top: 10px;
+  background-color: #687F9E;
+  height: 100vh;
+  width: 100vw; }
+  .searchMenu .grid {
+    grid-template-columns: 1fr; }
+  .searchMenu h3 {
+    color: white; }
+  .searchMenu .searchInput {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
+.searchMenuControls {
+  color: white;
+  display: flex;
+  margin-top: 10px; }
+  .searchMenuControls button {
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none; }
+    .searchMenuControls button i {
+      vertical-align: middle; }
+  .searchMenuControls button:last-child {
+    margin-left: auto; }
+
+.searchMenuTop {
+  display: flex;
+  flex-direction: row; }
+  .searchMenuTop i {
+    margin-left: auto;
+    width: 25px; }
+
+.filterOptions {
+  margin-top: 10px; }
+  .filterOptions button {
+    float: right;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: 16px; }
+
+.price label {
+  width: 50%; }
+
+.distanceInput, .priceInput, .sortBy {
+  padding-bottom: 10px; }
+
+.distanceInput, .priceInput {
+  width: 50%;
+  margin-left: auto; }
+  .distanceInput input, .priceInput input {
+    width: 45%;
+    text-align: center;
+    border: none;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid white; }
+  .distanceInput input::placeholder, .priceInput input::placeholder {
+    color: white; }
+  .distanceInput p, .priceInput p {
+    width: 10%; }
+
+.distanceInput input {
+  margin-left: auto; }
+
+.sortBy label {
+  width: 85%; }
+
+.sortInput {
+  width: 50%; }
+  .sortInput select {
+    margin-left: auto; }
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  nav .grid {
+    grid-template-columns: 1fr 7fr 2fr; }
+  nav button {
+    border: none;
+    border-radius: 0 5px 5px 0;
+    color: white;
+    background: #687F9E;
+    padding: 5px; }
+  nav ul {
+    align-items: center;
+    justify-content: flex-end; }
+    nav ul li:last-child {
+      padding-left: 10px; }
+  nav .navForm {
     width: 100%; }
-    nav .grid .navSearch img {
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      width: 20px;
-      opacity: 30%; }
-    nav .grid .navSearch input {
-      width: 100%;
-      height: 30px;
-      border-radius: 5px;
-      border: none;
-      background-color: #ECECEC;
-      padding-left: 40px; }
-  nav .grid .hamburger {
-    justify-self: end;
-    align-self: center;
-    opacity: 50%; }
+  nav h3 {
+    margin-right: 0; }
+  .searchInput {
+    width: 60%;
+    margin-right: 2px; }
+    .searchInput input {
+      border-radius: 5px 0 0 5px; }
+  .locationInput {
+    width: 40%; }
+    .locationInput input {
+      border-radius: 0; } }
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -45,7 +150,7 @@ a {
   color: inherit; }
 
 .container {
-  max-width: 75%;
+  max-width: 95%;
   margin: 0 auto; }
 
 .hidden {
@@ -60,6 +165,6 @@ a {
 .block {
   display: block; }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 768px) and (max-width: 979px) {
   .container {
-    max-width: 95%; } }
+    max-width: 85%; } }

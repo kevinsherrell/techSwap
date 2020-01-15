@@ -1,44 +1,205 @@
+//components
+//Header.js
+@import "queryMixins";
+
 nav {
   //background-color: pink;
   box-shadow: 2px -5px 11px gray;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-nav .grid{
-  //background-color: pink;
-  grid-template-columns: 1fr 8fr .5fr;
-  h3{
+
+  .grid {
+    grid-template-columns: 1fr 8fr .5fr;
+
+    i {
+      font-size: 25px;
+      align-self: center;
+    }
+  }
+
+  h3 {
     margin-right: 15px;
     align-self: center;
     color: #687F9E;
   }
-  .navForm{
+
+  .navForm {
     width: 95%;
     justify-content: center;
   }
 
-  .navSearch{
-    position: relative;
+}
+
+.searchInput, .locationInput {
+  position: relative;
+  width: 100%;
+
+  img {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 20px;
+    opacity: 30%;
+  }
+
+  input {
     width: 100%;
-    img{
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      width: 20px;
-      opacity: 30%;
-    }
-    input{
-      width: 100%;
-      height: 30px;
-      border-radius: 5px;
-      border: none;
-      background-color: #ECECEC;
-      padding-left: 40px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ECECEC;
+    padding-left: 40px;
+  }
+}
+
+//Search Menu
+.searchMenu {
+  color: white;
+  position: absolute;
+  top: 0;
+  padding-top: 10px;
+  background-color: #687F9E;
+  height: 100vh;
+  width: 100vw;
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  .searchInput {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.searchMenuControls {
+  color: white;
+  display: flex;
+  margin-top: 10px;
+
+  button {
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    i{
+      vertical-align: middle;
     }
   }
-  .hamburger{
-    justify-self: end;
-    align-self: center;
-    opacity: 50%;
+
+  button:last-child {
+    margin-left: auto;
+  }
+
+}
+
+.searchMenuTop {
+  display: flex;
+  flex-direction: row;
+
+  i {
+    margin-left: auto;
+    width: 25px;
+  }
+}
+//Search menu filters
+.filterOptions{
+  margin-top: 10px;
+  //background-color: pink;
+  button{
+    float: right;
+    color: white;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    font-size: 16px;
+  }
+}
+.price{
+  label{
+    width: 50%;
+  }
+}
+.distanceInput, .priceInput, .sortBy{
+  padding-bottom: 10px;
+}
+.distanceInput, .priceInput{
+  //background-color: green;
+  width: 50%;
+  margin-left: auto;
+  input{
+    width: 45%;
+    text-align: center;
+    border: none;
+    color: white;
+    background-color: rgba(0,0,0,0);
+    border-bottom: 1px solid white;
+  }
+  input::placeholder{
+    color: white;
+  }
+  p{
+    width: 10%;
+  }
+}
+.distanceInput{
+  input{
+    margin-left: auto;
+  }
+}
+.sortBy{
+  label{
+    width: 85%;
+  }
+
+}
+.sortInput{
+  width: 50%;
+  select{
+    margin-left: auto;
+  }
+}
+@include responsive($tablet-landscape){
+  nav{
+    .grid{
+      grid-template-columns: 1fr 7fr 2fr;
+    }
+    button{
+      border: none;
+      border-radius: 0 5px 5px 0;
+      color: white;
+      background: #687F9E;
+      padding: 5px;
+    }
+    ul{
+      align-items: center;
+      justify-content: flex-end;
+      li:last-child{
+        padding-left: 10px;
+      }
+    }
+    .navForm{
+      width: 100%;
+    }
+    h3{
+      margin-right: 0;
+    }
+  }
+
+  .searchInput{
+    width: 60%;
+    margin-right: 2px;
+    input{
+      border-radius: 5px 0 0 5px;
+    }
+  }
+  .locationInput{
+    width: 40%;
+    input{
+      border-radius: 0;
+    }
   }
 }
