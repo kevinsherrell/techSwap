@@ -1,19 +1,24 @@
+header {
+  position: relative; }
+
 nav {
   box-shadow: 2px -5px 11px gray;
   padding-top: 10px;
   padding-bottom: 10px; }
   nav .grid {
     grid-template-columns: 1fr 8fr .5fr; }
-    nav .grid i {
-      font-size: 25px;
-      align-self: center; }
+  nav .hamburger {
+    font-size: 30px;
+    align-self: center;
+    text-align: right; }
+  nav .hamburger:hover {
+    cursor: grab; }
   nav h3 {
     margin-right: 15px;
     align-self: center;
     color: #687F9E; }
   nav .navForm {
-    width: 95%;
-    justify-content: center; }
+    width: 95%; }
 
 .searchInput, .locationInput {
   position: relative;
@@ -81,7 +86,7 @@ nav {
 .price label {
   width: 50%; }
 
-.distanceInput, .priceInput, .sortBy {
+.distanceInput, .priceInput, .sortBy, .category {
   padding-bottom: 10px; }
 
 .distanceInput, .priceInput {
@@ -102,41 +107,100 @@ nav {
 .distanceInput input {
   margin-left: auto; }
 
-.sortBy label {
+.sortBy label, .category label {
   width: 85%; }
 
 .sortInput {
-  width: 50%; }
+  width: 50%;
+  border: none;
+  color: rgba(0, 0, 0, 0.5); }
   .sortInput select {
     margin-left: auto; }
 
-@media only screen and (min-width: 768px) and (max-width: 979px) {
+.categoryInput {
+  width: 50%;
+  color: rgba(0, 0, 0, 0.5); }
+
+.navMenuClosed {
+  position: absolute;
+  max-height: 0px;
+  width: 100%;
+  background-color: pink;
+  visibility: hidden; }
+
+.navMenuOpen {
+  position: absolute;
+  max-height: 200px;
+  width: 100%;
+  background-color: #687F9E;
+  color: white;
+  visibility: initial;
+  transition: max-height 100ms; }
+  .navMenuOpen ul {
+    display: flex;
+    flex-direction: column; }
+  .navMenuOpen li {
+    vertical-align: middle;
+    padding: 5px 5px 5px 2.5%;
+    height: 25%; }
+  .navMenuOpen li:hover {
+    background-color: #ECECEC;
+    color: #687F9E; }
+  .navMenuOpen li:first-child {
+    padding-top: 5px; }
+
+@media only screen and (min-width: 768px) {
   nav .grid {
-    grid-template-columns: 1fr 7fr 2fr; }
+    grid-template-columns: .8fr 7fr .5fr; }
   nav button {
     border: none;
     border-radius: 0 5px 5px 0;
     color: white;
     background: #687F9E;
-    padding: 5px; }
+    padding: 5px;
+    width: 10%; }
   nav ul {
     align-items: center;
-    justify-content: flex-end; }
+    justify-content: space-around; }
     nav ul li:last-child {
       padding-left: 10px; }
-  nav .navForm {
-    width: 100%; }
-  nav h3 {
-    margin-right: 0; }
+  h3 {
+    margin-right: 0;
+    font-size: 25px; }
+  a {
+    color: #687F9E; }
   .searchInput {
-    width: 60%;
+    width: 50%;
     margin-right: 2px; }
     .searchInput input {
       border-radius: 5px 0 0 5px; }
   .locationInput {
-    width: 40%; }
+    width: 50%; }
     .locationInput input {
-      border-radius: 0; } }
+      border-radius: 0;
+      width: 70%; }
+    .locationInput button {
+      width: 30%;
+      height: 100%; }
+  nav .navForm {
+    width: 100%; } }
+
+@media only screen and (min-width: 1024px) {
+  nav .grid {
+    grid-template-columns: 1fr 7fr 2fr; }
+  nav .loginSignup li {
+    border: 1px solid #687F9E;
+    border-radius: 5px;
+    color: #687F9E;
+    padding: 5px; }
+    nav .loginSignup li:hover {
+      color: white;
+      background-color: #687F9E; }
+  nav .loginSignup li > i {
+    font-size: 20px;
+    margin-right: 5px; }
+  .searchInput {
+    width: 50%; } }
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -148,6 +212,13 @@ nav {
 
 a {
   color: inherit; }
+
+input:focus, select:focus {
+  outline-color: green; }
+
+select option {
+  border: none;
+  box-shadow: none; }
 
 .container {
   max-width: 95%;
@@ -165,6 +236,14 @@ a {
 .block {
   display: block; }
 
-@media only screen and (min-width: 768px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) {
   .container {
-    max-width: 85%; } }
+    max-width: 95%; } }
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    max-width: 95%; } }
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 90%; } }

@@ -15,6 +15,15 @@
 a{
   color: inherit;
 }
+
+input:focus, select:focus{
+  outline-color: green;
+}
+select option{
+  border: none;
+  box-shadow: none;
+
+}
 .container{
   max-width: 95%;
   margin: 0 auto;
@@ -35,6 +44,19 @@ a{
 }
 @include responsive($tablet-landscape){
   .container{
-    max-width: 85%;
+    max-width: 95%;
+    //max-width: 85%;
   }
+}
+@include responsive($large-desktop){
+  .container{
+    //max-width: 70%;
+    max-width: 95%;
+  }
+}
+@include responsive($xl-desktop){
+.container{
+  max-width: 90%;
+  //max-width: 60%;
+}
 }

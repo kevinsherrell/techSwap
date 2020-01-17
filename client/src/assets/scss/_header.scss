@@ -2,6 +2,10 @@
 //Header.js
 @import "queryMixins";
 
+header {
+  position: relative;
+}
+
 nav {
   //background-color: pink;
   box-shadow: 2px -5px 11px gray;
@@ -11,11 +15,24 @@ nav {
   .grid {
     grid-template-columns: 1fr 8fr .5fr;
 
-    i {
-      font-size: 25px;
-      align-self: center;
-    }
+    //i {
+    //  font-size: 30px;
+    //  align-self: center;
+    //}
+    //i:hover{
+    //  cursor: grab;
+    //}
   }
+  .hamburger{
+    font-size: 30px;
+    align-self: center;
+    text-align: right;
+  }
+  .hamburger:hover{
+    cursor: grab;
+  }
+
+
 
   h3 {
     margin-right: 15px;
@@ -25,7 +42,7 @@ nav {
 
   .navForm {
     width: 95%;
-    justify-content: center;
+    //justify-content: center;
   }
 
 }
@@ -50,6 +67,7 @@ nav {
     background-color: #ECECEC;
     padding-left: 40px;
   }
+
 }
 
 //Search Menu
@@ -86,7 +104,8 @@ nav {
     background-color: rgba(0, 0, 0, 0);
     color: white;
     border: none;
-    i{
+
+    i {
       vertical-align: middle;
     }
   }
@@ -106,100 +125,219 @@ nav {
     width: 25px;
   }
 }
+
 //Search menu filters
-.filterOptions{
+.filterOptions {
   margin-top: 10px;
   //background-color: pink;
-  button{
+  button {
     float: right;
     color: white;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     font-size: 16px;
   }
 }
-.price{
-  label{
+
+.price {
+  label {
     width: 50%;
   }
 }
-.distanceInput, .priceInput, .sortBy{
+
+.distanceInput, .priceInput, .sortBy, .category {
   padding-bottom: 10px;
 }
-.distanceInput, .priceInput{
+
+.distanceInput, .priceInput {
   //background-color: green;
   width: 50%;
   margin-left: auto;
-  input{
+
+  input {
     width: 45%;
     text-align: center;
     border: none;
     color: white;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border-bottom: 1px solid white;
   }
-  input::placeholder{
+
+  input::placeholder {
     color: white;
   }
-  p{
+
+  p {
     width: 10%;
   }
 }
-.distanceInput{
-  input{
+
+.distanceInput {
+  input {
     margin-left: auto;
   }
 }
-.sortBy{
-  label{
+
+.sortBy, .category {
+  label {
     width: 85%;
   }
 
 }
-.sortInput{
+
+.sortInput {
   width: 50%;
-  select{
+  border: none;
+  color: rgba(0, 0, 0, .5);
+
+  select {
     margin-left: auto;
   }
 }
-@include responsive($tablet-landscape){
-  nav{
-    .grid{
-      grid-template-columns: 1fr 7fr 2fr;
+.categoryInput{
+  width: 50%;
+  color: rgba(0, 0, 0, .5);
+
+}
+//mobile nav (hamburger) menu
+.navMenuClosed {
+  position: absolute;
+  max-height: 0px;
+  width: 100%;
+  background-color: pink;
+  visibility: hidden;
+
+
+}
+
+.navMenuOpen {
+  //padding-top: 10px;
+  position: absolute;
+  max-height: 200px;
+  width: 100%;
+  background-color: #687F9E;
+  color: white;
+  visibility: initial;
+  transition: max-height 100ms;
+  ul{
+    //padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    //align-content: center;
+  }
+  li{
+    vertical-align: middle;
+    padding: 5px 5px 5px 2.5%;
+    height: 25%;
+  }
+  li:hover{
+    background-color: #ECECEC;
+    color: #687F9E;
+  }
+  li:first-child{
+    padding-top: 5px;
+  }
+}
+@include responsive($tablet-landscape) {
+  nav {
+    .grid {
+      grid-template-columns: .8fr 7fr .5fr;
+      //i{
+      //  font-size: 30px;
+      //  text-align: right;
+      //}
     }
-    button{
+
+    button {
       border: none;
       border-radius: 0 5px 5px 0;
       color: white;
       background: #687F9E;
       padding: 5px;
+      width: 10%;
     }
-    ul{
+
+    ul {
       align-items: center;
-      justify-content: flex-end;
-      li:last-child{
+
+      justify-content: space-around;
+
+
+      li:last-child {
         padding-left: 10px;
       }
     }
-    .navForm{
-      width: 100%;
-    }
-    h3{
-      margin-right: 0;
-    }
-  }
 
-  .searchInput{
-    width: 60%;
+    }
+
+
+    h3 {
+      margin-right: 0;
+      font-size: 25px;
+    }
+
+    a {
+      color: #687F9E;
+    }
+
+
+  .searchInput {
+    width: 50%;
     margin-right: 2px;
-    input{
+
+    input {
       border-radius: 5px 0 0 5px;
     }
   }
-  .locationInput{
-    width: 40%;
-    input{
+  .locationInput {
+    width: 50%;
+
+    input {
       border-radius: 0;
+      width: 70%;
     }
+    button{
+      width: 30%;
+      height: 100%;
+    }
+  }
+  nav .navForm{
+    width: 100%;
+  }
+}
+
+@include responsive($large-desktop){
+  nav{
+    .grid{
+      grid-template-columns: 1fr 7fr 2fr;
+      //li > i{
+      //  color: red;
+      //  font-size: 5px;
+      //}
+    }
+    .loginSignup{
+      li{
+        border: 1px solid #687F9E;
+        border-radius: 5px;
+        color: #687F9E;
+        padding: 5px;
+        &:hover{
+          color: white;
+          background-color: #687F9E;
+        }
+      }
+      li >i{
+        font-size: 20px;
+        margin-right: 5px;
+      }
+
+
+    }
+  //.navForm{
+  //  background-color: pink;
+  //}
+  }
+  .searchInput{
+    width: 50%;
   }
 }
