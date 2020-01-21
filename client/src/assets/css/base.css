@@ -1,24 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 header {
   position: relative; }
 
 nav {
-  box-shadow: 2px -5px 11px gray;
-  padding-top: 10px;
-  padding-bottom: 10px; }
+  padding: 10px 0;
+  box-shadow: 2px -5px 11px gray; }
   nav .grid {
     grid-template-columns: 1fr 8fr .5fr; }
   nav .hamburger {
+    align-self: center;
     font-size: 30px;
-    align-self: center;
     text-align: right; }
-  nav .hamburger:hover {
-    cursor: grab; }
+    nav .hamburger:hover {
+      cursor: grab; }
   nav h3 {
-    margin-right: 15px;
     align-self: center;
+    margin-right: 15px;
     color: #687F9E; }
   nav .navForm {
     width: 95%; }
+
+.authNav {
+  box-shadow: none; }
+  .authNav li {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px; }
+    .authNav li i {
+      color: #687F9E; }
 
 .searchInput, .locationInput {
   position: relative;
@@ -30,21 +41,22 @@ nav {
     width: 20px;
     opacity: 30%; }
   .searchInput input, .locationInput input {
+    padding-left: 40px;
     width: 100%;
     height: 30px;
     border-radius: 5px;
     border: none;
-    background-color: #ECECEC;
-    padding-left: 40px; }
+    background-color: #ECECEC; }
 
 .searchMenu {
-  color: white;
   position: absolute;
   top: 0;
+  z-index: 1;
   padding-top: 10px;
-  background-color: #687F9E;
   height: 100vh;
-  width: 100vw; }
+  width: 100vw;
+  color: white;
+  background-color: #687F9E; }
   .searchMenu .grid {
     grid-template-columns: 1fr; }
   .searchMenu h3 {
@@ -54,18 +66,18 @@ nav {
     margin-bottom: 10px; }
 
 .searchMenuControls {
-  color: white;
   display: flex;
-  margin-top: 10px; }
+  margin-top: 10px;
+  color: white; }
   .searchMenuControls button {
-    font-size: 16px;
     background-color: rgba(0, 0, 0, 0);
+    border: none;
     color: white;
-    border: none; }
+    font-size: 16px; }
     .searchMenuControls button i {
       vertical-align: middle; }
-  .searchMenuControls button:last-child {
-    margin-left: auto; }
+    .searchMenuControls button:last-child {
+      margin-left: auto; }
 
 .searchMenuTop {
   display: flex;
@@ -94,11 +106,11 @@ nav {
   margin-left: auto; }
   .distanceInput input, .priceInput input {
     width: 45%;
-    text-align: center;
-    border: none;
     color: white;
+    border: none;
     background-color: rgba(0, 0, 0, 0);
-    border-bottom: 1px solid white; }
+    border-bottom: 1px solid white;
+    text-align: center; }
   .distanceInput input::placeholder, .priceInput input::placeholder {
     color: white; }
   .distanceInput p, .priceInput p {
@@ -112,8 +124,8 @@ nav {
 
 .sortInput {
   width: 50%;
-  border: none;
-  color: rgba(0, 0, 0, 0.5); }
+  color: rgba(0, 0, 0, 0.5);
+  border: none; }
   .sortInput select {
     margin-left: auto; }
 
@@ -130,15 +142,19 @@ nav {
 
 .navMenuOpen {
   position: absolute;
-  max-height: 200px;
+  z-index: 1;
+  min-height: 200px;
   width: 100%;
+  visibility: initial;
   background-color: #687F9E;
   color: white;
-  visibility: initial;
   transition: max-height 100ms; }
   .navMenuOpen ul {
     display: flex;
     flex-direction: column; }
+    .navMenuOpen ul .categoryHeader {
+      background-color: rgba(236, 236, 236, 0.5);
+      color: white; }
   .navMenuOpen li {
     vertical-align: middle;
     padding: 5px 5px 5px 2.5%;
@@ -149,21 +165,63 @@ nav {
   .navMenuOpen li:first-child {
     padding-top: 5px; }
 
+.loggedIn {
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 2.5%; }
+  .loggedIn p {
+    align-self: center;
+    padding-left: 15px; }
+    .loggedIn p span {
+      font-size: 12px;
+      margin-left: 5px; }
+  .loggedIn ul {
+    padding-top: 10px;
+    flex-direction: row;
+    justify-content: center; }
+  .loggedIn li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    transition: transform .2s; }
+  .loggedIn li:hover {
+    background-color: #687F9E;
+    color: white;
+    cursor: grab; }
+    .loggedIn li:hover i {
+      transform: scale(1.5); }
+
+.avatar {
+  margin: 0 auto 10px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid white;
+  border-radius: 100%;
+  overflow: hidden; }
+  .avatar img {
+    object-fit: fill;
+    width: 100%; }
+
 @media only screen and (min-width: 768px) {
   nav .grid {
     grid-template-columns: .8fr 7fr .5fr; }
   nav button {
+    padding: 5px;
+    width: 10%;
     border: none;
     border-radius: 0 5px 5px 0;
     color: white;
-    background: #687F9E;
-    padding: 5px;
-    width: 10%; }
+    background: #687F9E; }
   nav ul {
     align-items: center;
     justify-content: space-around; }
     nav ul li:last-child {
       padding-left: 10px; }
+  .authNav {
+    width: 40%;
+    margin-left: auto; }
   h3 {
     margin-right: 0;
     font-size: 25px; }
@@ -173,34 +231,183 @@ nav {
     width: 50%;
     margin-right: 2px; }
     .searchInput input {
-      border-radius: 5px 0 0 5px; }
+      border-radius: 5px 0 0 5px;
+      height: 100%; }
   .locationInput {
     width: 50%; }
     .locationInput input {
       border-radius: 0;
-      width: 70%; }
+      width: 70%;
+      height: 100%; }
     .locationInput button {
       width: 30%;
       height: 100%; }
   nav .navForm {
-    width: 100%; } }
+    width: 100%; }
+  .navMenuOverlayFalse {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0; }
+  .navMenuOverlayTrue {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.18); }
+  .navMenuClosed {
+    top: 0;
+    right: 0;
+    width: 0px;
+    overflow: hidden;
+    transition: width 200ms; }
+  .navMenuOpen {
+    top: 0;
+    right: 0;
+    z-index: 2;
+    min-height: 100vh;
+    width: 40%;
+    transition: width 200ms; }
+    .navMenuOpen ul {
+      width: initial; } }
 
 @media only screen and (min-width: 1024px) {
   nav .grid {
     grid-template-columns: 1fr 7fr 2fr; }
+  nav .desktopAuthGrid {
+    grid-template-columns: 1fr 4fr 4fr; }
   nav .loginSignup li {
+    padding: 5px;
     border: 1px solid #687F9E;
     border-radius: 5px;
-    color: #687F9E;
-    padding: 5px; }
+    color: #687F9E; }
     nav .loginSignup li:hover {
       color: white;
       background-color: #687F9E; }
   nav .loginSignup li > i {
-    font-size: 20px;
-    margin-right: 5px; }
+    margin-right: 5px;
+    font-size: 20px; }
+  nav .loginSignup .authNav {
+    width: 100%; }
+    nav .loginSignup .authNav li {
+      border: none;
+      background-color: white;
+      color: #687F9E;
+      padding: 0;
+      transition: transform .2s; }
+      nav .loginSignup .authNav li i {
+        opacity: .8; }
+    nav .loginSignup .authNav li:hover {
+      cursor: grab; }
+      nav .loginSignup .authNav li:hover i {
+        opacity: 1;
+        transform: scale(1.5); }
+  nav .loginSignup .listAnItem {
+    margin-left: 30px; }
+  nav .loginSignup .navAvatar {
+    margin-left: auto;
+    border-radius: 100%;
+    border: 1px solid #687F9E;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    overflow: hidden; }
+    nav .loginSignup .navAvatar img {
+      object-fit: fill;
+      width: 100%; }
   .searchInput {
     width: 50%; } }
+
+.browse {
+  position: relative;
+  margin: 20px 0;
+  color: #687F9E; }
+  .browse .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
+  .browse i {
+    font-size: 16px; }
+
+.categories {
+  position: relative;
+  padding-left: 10px; }
+  .categories:hover {
+    cursor: grab; }
+
+.catMenuClosed {
+  position: absolute;
+  visibility: hidden;
+  height: 0; }
+
+.categoryMenu {
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 0 0px 15px 15px;
+  border: 1px solid #687F9E;
+  width: 200px;
+  height: 230px;
+  transition: height 100ms;
+  background-color: white; }
+  .categoryMenu ul {
+    width: 100%; }
+  .categoryMenu li {
+    padding: 10px; }
+  .categoryMenu li:hover {
+    background-color: #687F9E;
+    color: white; }
+
+.listingsNear {
+  margin-left: auto; }
+
+.listings .grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px; }
+
+.itemListing {
+  position: relative;
+  border-radius: 10px;
+  flex-direction: column;
+  min-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #687F9E; }
+
+.itemImage {
+  min-height: 205px; }
+
+.itemInfo {
+  background-color: white;
+  width: 100%; }
+  .itemInfo p {
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+    color: #687F9E; }
+
+.listAnItem {
+  position: sticky;
+  background-color: white;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%; }
+  .listAnItem a {
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #687F9E;
+    color: white; }
+
+@media only screen and (min-width: 1024px) {
+  .browse .grid {
+    grid-template-columns: .2fr .2fr .2fr .2fr 1fr; } }
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -246,4 +453,4 @@ select option {
 
 @media only screen and (min-width: 1440px) {
   .container {
-    max-width: 90%; } }
+    max-width: 75%; } }

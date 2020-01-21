@@ -1,4 +1,137 @@
 // components
-    // Main.js
-    // ListAnItem.js
-    // ItemListing.js
+// Main.js
+// ListAnItem.js
+// ItemListing.js
+@import 'queryMixins';
+
+.browse {
+  position: relative;
+  margin: 20px 0;
+  color: #687F9E;
+
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+.categories {
+  //border-right: 1px solid grey;
+  position: relative;
+  padding-left: 10px;
+
+  &:hover {
+    cursor: grab;
+  }
+}
+
+.catMenuClosed {
+  position: absolute;
+  visibility: hidden;
+
+  height: 0;
+}
+
+.categoryMenu {
+  position: absolute;
+  //left: 88px;
+  top: 100%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 0 0px 15px 15px;
+  border: 1px solid #687F9E;
+  width: 200px;
+  height: 230px;
+  transition: height 100ms;
+  //padding: 10px;
+  background-color: white;
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    padding: 10px;
+  }
+
+  li:hover {
+    background-color: #687F9E;
+    color: white;
+  }
+}
+
+.listingsNear {
+  margin-left: auto;
+}
+
+.listings {
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+  }
+}
+
+.itemListing {
+  position: relative;
+  border-radius: 10px;
+  flex-direction: column;
+  min-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #687F9E;
+
+}
+
+.itemImage {
+  min-height: 205px;
+}
+
+.itemInfo {
+  //position: absolute;
+  //bottom: 0;
+  background-color: white;
+  width: 100%;
+
+  p {
+    font-size: 14px;
+    padding: 5px;
+    //height: 40%;
+    width: 100%;
+    color: #687F9E;
+  }
+}
+
+.listAnItem {
+  position: sticky;
+  background-color: white;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+
+  a {
+    border-radius: 10px;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #687F9E;
+    color: white;
+  }
+}
+
+
+@include responsive($large-desktop) {
+  .browse {
+    .grid {
+      grid-template-columns: .2fr .2fr .2fr .2fr 1fr;
+    }
+
+  }
+}

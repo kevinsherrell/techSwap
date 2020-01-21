@@ -1,84 +1,109 @@
 //components
 //Header.js
 @import "queryMixins";
+// Style order
+// Positioning
+// Display and Sizing
+// Color, shadows, outlines etc.
+// Text
+// Other
 
 header {
   position: relative;
 }
 
 nav {
-  //background-color: pink;
+  padding: 10px 0;
+
   box-shadow: 2px -5px 11px gray;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   .grid {
     grid-template-columns: 1fr 8fr .5fr;
-
-    //i {
-    //  font-size: 30px;
-    //  align-self: center;
-    //}
-    //i:hover{
-    //  cursor: grab;
-    //}
   }
-  .hamburger{
-    font-size: 30px;
+
+  .hamburger {
     align-self: center;
+
+    font-size: 30px;
     text-align: right;
-  }
-  .hamburger:hover{
-    cursor: grab;
-  }
 
-
+    &:hover {
+      cursor: grab;
+    }
+  }
 
   h3 {
-    margin-right: 15px;
     align-self: center;
+    margin-right: 15px;
+
     color: #687F9E;
   }
 
   .navForm {
     width: 95%;
-    //justify-content: center;
   }
 
 }
 
+.authNav {
+  //justify-content: space-around;
+  box-shadow: none;
+
+  li {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+
+    i {
+      color: #687F9E;
+    }
+  }
+}
+
+//icon placement for search and location inputs
 .searchInput, .locationInput {
   position: relative;
+
   width: 100%;
 
   img {
     position: absolute;
     top: 5px;
     left: 10px;
+
     width: 20px;
+
     opacity: 30%;
   }
 
   input {
+    padding-left: 40px;
+
     width: 100%;
     height: 30px;
+
     border-radius: 5px;
     border: none;
+
     background-color: #ECECEC;
-    padding-left: 40px;
   }
 
 }
 
 //Search Menu
 .searchMenu {
-  color: white;
   position: absolute;
   top: 0;
+  z-index: 1;
+
   padding-top: 10px;
-  background-color: #687F9E;
   height: 100vh;
   width: 100vw;
+
+  color: white;
+  background-color: #687F9E;
 
   .grid {
     grid-template-columns: 1fr;
@@ -95,23 +120,25 @@ nav {
 }
 
 .searchMenuControls {
-  color: white;
   display: flex;
   margin-top: 10px;
 
+  color: white;
+
   button {
-    font-size: 16px;
     background-color: rgba(0, 0, 0, 0);
-    color: white;
     border: none;
+    color: white;
+
+    font-size: 16px;
 
     i {
       vertical-align: middle;
     }
-  }
 
-  button:last-child {
-    margin-left: auto;
+    &:last-child {
+      margin-left: auto;
+    }
   }
 
 }
@@ -129,12 +156,14 @@ nav {
 //Search menu filters
 .filterOptions {
   margin-top: 10px;
-  //background-color: pink;
+
   button {
     float: right;
+
     color: white;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+
     font-size: 16px;
   }
 }
@@ -150,17 +179,18 @@ nav {
 }
 
 .distanceInput, .priceInput {
-  //background-color: green;
   width: 50%;
   margin-left: auto;
 
   input {
     width: 45%;
-    text-align: center;
-    border: none;
+
     color: white;
+    border: none;
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 1px solid white;
+
+    text-align: center;
   }
 
   input::placeholder {
@@ -187,18 +217,21 @@ nav {
 
 .sortInput {
   width: 50%;
-  border: none;
+
   color: rgba(0, 0, 0, .5);
+  border: none;
 
   select {
     margin-left: auto;
   }
 }
-.categoryInput{
-  width: 50%;
-  color: rgba(0, 0, 0, .5);
 
+.categoryInput {
+  width: 50%;
+
+  color: rgba(0, 0, 0, .5);
 }
+
 //mobile nav (hamburger) menu
 .navMenuClosed {
   position: absolute;
@@ -211,55 +244,119 @@ nav {
 }
 
 .navMenuOpen {
-  //padding-top: 10px;
   position: absolute;
-  max-height: 200px;
+  z-index: 1;
+
+  min-height: 200px;
   width: 100%;
+  visibility: initial;
+
   background-color: #687F9E;
   color: white;
-  visibility: initial;
+
   transition: max-height 100ms;
-  ul{
-    //padding-top: 10px;
+
+  ul {
     display: flex;
     flex-direction: column;
-    //align-content: center;
+
+    .categoryHeader {
+      background-color: rgba(236, 236, 236, .5);
+      color: white;
+
+    }
   }
-  li{
+
+  li {
     vertical-align: middle;
     padding: 5px 5px 5px 2.5%;
     height: 25%;
   }
-  li:hover{
+
+  li:hover {
     background-color: #ECECEC;
     color: #687F9E;
   }
-  li:first-child{
+
+  li:first-child {
     padding-top: 5px;
   }
+
 }
+
+.loggedIn {
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 2.5%;
+
+  p {
+    align-self: center;
+    padding-left: 15px;
+    span{
+      font-size: 12px;
+      margin-left: 5px;
+    }
+  }
+  ul{
+    padding-top: 10px;
+    flex-direction: row;
+    justify-content: center;
+  }
+  li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //text-align: center;
+    font-size: 12px;
+    transition: transform .2s;
+  }
+  li:hover{
+    background-color: #687F9E;
+    color: white;
+    cursor: grab;
+    i{
+      transform: scale(1.5);
+
+    }
+  }
+;;
+}
+
+.avatar {
+  margin: 0 auto 10px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid white;
+  border-radius: 100%;
+  overflow: hidden;
+
+  img {
+    object-fit: fill;
+    width: 100%;
+  }
+
+
+}
+
 @include responsive($tablet-landscape) {
   nav {
     .grid {
       grid-template-columns: .8fr 7fr .5fr;
-      //i{
-      //  font-size: 30px;
-      //  text-align: right;
-      //}
     }
 
     button {
+      padding: 5px;
+      width: 10%;
+
       border: none;
       border-radius: 0 5px 5px 0;
       color: white;
       background: #687F9E;
-      padding: 5px;
-      width: 10%;
     }
 
     ul {
       align-items: center;
-
       justify-content: space-around;
 
 
@@ -268,17 +365,21 @@ nav {
       }
     }
 
-    }
+  }
+  .authNav {
+    width: 40%;
+    margin-left: auto;
+  }
 
+  h3 {
+    margin-right: 0;
 
-    h3 {
-      margin-right: 0;
-      font-size: 25px;
-    }
+    font-size: 25px;
+  }
 
-    a {
-      color: #687F9E;
-    }
+  a {
+    color: #687F9E;
+  }
 
 
   .searchInput {
@@ -287,6 +388,7 @@ nav {
 
     input {
       border-radius: 5px 0 0 5px;
+      height: 100%;
     }
   }
   .locationInput {
@@ -295,49 +397,142 @@ nav {
     input {
       border-radius: 0;
       width: 70%;
+      height: 100%;
     }
-    button{
+
+    button {
       width: 30%;
       height: 100%;
     }
   }
-  nav .navForm{
+  nav .navForm {
     width: 100%;
   }
+  .navMenuOverlayFalse {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 0;
+  }
+  .navMenuOverlayTrue {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    min-height: 100vh;
+    width: 100%;
+
+    background-color: rgba(0, 0, 0, .18);
+  }
+  .navMenuClosed {
+    top: 0;
+    right: 0;
+
+    width: 0px;
+    overflow: hidden;
+
+    transition: width 200ms;
+  }
+
+  .navMenuOpen {
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    min-height: 100vh;
+    width: 40%;
+
+    transition: width 200ms;
+
+    ul {
+      width: initial;
+    }
+  }
+
 }
 
-@include responsive($large-desktop){
-  nav{
-    .grid{
+@include responsive($large-desktop) {
+  nav {
+    .grid {
       grid-template-columns: 1fr 7fr 2fr;
-      //li > i{
-      //  color: red;
-      //  font-size: 5px;
-      //}
     }
-    .loginSignup{
-      li{
+
+    .desktopAuthGrid {
+      grid-template-columns: 1fr 4fr 4fr;
+    }
+
+    .loginSignup {
+      li {
+        padding: 5px;
+
         border: 1px solid #687F9E;
         border-radius: 5px;
         color: #687F9E;
-        padding: 5px;
-        &:hover{
+
+        &:hover {
           color: white;
           background-color: #687F9E;
         }
       }
-      li >i{
-        font-size: 20px;
+
+      li > i {
         margin-right: 5px;
+
+        font-size: 20px;
       }
 
+      .authNav {
+        width: 100%;
 
+        li {
+          border: none;
+          background-color: white;
+          color: #687F9E;
+          padding: 0;
+          transition: transform .2s;
+
+          i {
+            opacity: .8;
+          }
+        }
+
+        li:hover {
+          cursor: grab;
+
+          i {
+            opacity: 1;
+            transform: scale(1.5);
+          }
+        }
+      }
+
+      .listAnItem {
+        margin-left: 30px;
+      }
+
+      .navAvatar {
+        margin-left: auto;
+        border-radius: 100%;
+        border: 1px solid #687F9E;;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        overflow: hidden;
+
+        img {
+          object-fit: fill;
+          width: 100%;
+          //object-fit: ;
+        }
+      }
     }
-  //.navForm{
-  //  background-color: pink;
-  //}
+
   }
-  .searchInput{
+  .searchInput {
     width: 50%;
   }
+
+
 }
