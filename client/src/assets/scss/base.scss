@@ -1,8 +1,8 @@
 @import "queryMixins";
 @import "header";
-@import "dashboard";
+//@import "dashboard";
 @import "main";
-@import "listingPage";
+//@import "listingPage";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 *{
   font-family: 'Roboto', sans-serif;
@@ -12,9 +12,20 @@
   text-decoration: none;
   box-sizing: border-box;
 }
+a{
+  color: inherit;
+}
 
+input:focus, select:focus{
+  outline-color: green;
+}
+select option{
+  border: none;
+  box-shadow: none;
+
+}
 .container{
-  max-width: 75%;
+  max-width: 95%;
   margin: 0 auto;
 }
 .hidden{
@@ -22,8 +33,30 @@
 }
 
 
-@include responsive($phone){
+.grid{
+  display: grid;
+}
+.flex{
+  display: flex;
+}
+.block{
+  display: block;
+}
+@include responsive($tablet-landscape){
   .container{
     max-width: 95%;
+    //max-width: 85%;
   }
+}
+@include responsive($large-desktop){
+  .container{
+    //max-width: 70%;
+    max-width: 95%;
+  }
+}
+@include responsive($xl-desktop){
+.container{
+  max-width: 75%;
+  //max-width: 60%;
+}
 }
