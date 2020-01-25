@@ -4,6 +4,7 @@ import avatar from "../../assets/images/cloudStrife.png";
 function NavMenu(props) {
     return (
             <>
+
             <div
                 className={`${props.browserWidth < 1024 && props.navMenuToggle ? "navMenuOpen" : "navMenuClosed"}`}>
                 {/*todo - only display if the user is logged in*/}

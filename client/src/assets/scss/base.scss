@@ -2,7 +2,7 @@
 @import "header";
 //@import "dashboard";
 @import "main";
-//@import "listingPage";
+@import "listingPage";
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 *{
   font-family: 'Roboto', sans-serif;
@@ -11,6 +11,17 @@
   margin: 0;
   text-decoration: none;
   box-sizing: border-box;
+}
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: white;
+  height: 54px;
+
+
 }
 a{
   color: inherit;
@@ -56,7 +67,7 @@ select option{
 }
 @include responsive($xl-desktop){
 .container{
-  max-width: 75%;
+  max-width: 60%;
   //max-width: 60%;
 }
 }

@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-header {
-  position: relative; }
-
 nav {
   padding: 10px 0;
   box-shadow: 2px -5px 11px gray; }
@@ -320,6 +317,13 @@ nav {
   .searchInput {
     width: 50%; } }
 
+.main {
+  width: 100%;
+  margin-top: 54px; }
+
+.content {
+  width: 100%; }
+
 .browse {
   position: relative;
   margin: 20px 0;
@@ -406,8 +410,194 @@ nav {
     color: white; }
 
 @media only screen and (min-width: 1024px) {
+  .sidebar {
+    padding: 10px;
+    border-right: 1px solid black;
+    overflow: hidden;
+    color: #687F9E;
+    margin-top: 20px;
+    position: fixed;
+    left: 2.5%;
+    width: 18%;
+    min-height: 50%; }
+    .sidebar button {
+      margin-top: 25px;
+      padding: 5px;
+      width: 50%;
+      background-color: #687F9E;
+      color: white;
+      border: none;
+      border-radius: 15px; }
+  .content {
+    margin-left: 20%;
+    right: 0;
+    width: 80%; }
   .browse .grid {
-    grid-template-columns: .2fr .2fr .2fr .2fr 1fr; } }
+    grid-template-columns: .2fr .2fr .2fr .2fr 1fr; }
+  .searchUpdate {
+    flex-direction: column; }
+    .searchUpdate h4 {
+      margin: 10px 0; }
+  .priceInputSB input, .distanceInputSB input {
+    padding-left: 6px;
+    width: 30%; } }
+
+@media only screen and (min-width: 1440px) {
+  .sidebar {
+    left: 12.5%;
+    width: 14%; } }
+
+.listingPage {
+  margin-top: 61px; }
+  .listingPage .container {
+    flex-direction: column; }
+
+.listingMain {
+  flex-direction: column; }
+  .listingMain .listingImage {
+    width: 100%; }
+
+.listingImage {
+  position: relative; }
+  .listingImage p {
+    border-radius: 0 15px 15px 0;
+    background-color: #687F9E;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    top: 30%;
+    left: 0; }
+  .listingImage p:nth-child(3) {
+    top: 50%; }
+
+.listingInfo h4 {
+  padding-top: 10px; }
+
+.listingInfo sub {
+  color: red; }
+
+.listingImage {
+  border: 1px solid #687F9E;
+  border-radius: 10px;
+  background-color: black;
+  width: 100%;
+  height: 250px;
+  overflow: hidden; }
+  .listingImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .listingImage div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; }
+
+.otherListings {
+  margin-top: 30px; }
+  .otherListings h4 {
+    margin-bottom: 15px; }
+  .otherListings h4:nth-child(3) {
+    margin-top: 30px;
+    margin-bottom: 15px; }
+
+.moreListingsUser {
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px; }
+
+.listingFeedback {
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .listingFeedback img {
+    width: 100%;
+    border-radius: 15px; }
+  .listingFeedback textarea {
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    border-radius: 10px; }
+  .listingFeedback button {
+    display: block;
+    margin-left: auto;
+    border-radius: 15px;
+    border: none;
+    background-color: #687F9E;
+    color: white;
+    padding: 10px;
+    width: 30%; }
+
+.listingUser {
+  align-items: center; }
+  .listingUser p {
+    margin-left: auto; }
+
+.listingAvatar {
+  border-radius: 100%;
+  border: 1px solid black;
+  height: 35px;
+  width: 35px;
+  overflow: hidden;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px; }
+  .listingAvatar img {
+    width: 100%; }
+
+@media only screen and (min-width: 768px) {
+  .listingPage .container {
+    width: 95%;
+    flex-direction: row; }
+  .listingPage .listingUser {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+  .listingMain {
+    flex-direction: column;
+    width: 50%;
+    padding-right: 10px; }
+    .listingMain .listingImage {
+      width: 100%; }
+  .listingImage {
+    position: relative; }
+    .listingImage p {
+      border-radius: 0 15px 15px 0;
+      background-color: #687F9E;
+      color: white;
+      padding: 10px;
+      position: absolute;
+      top: 30%;
+      left: 0; }
+    .listingImage p:nth-child(3) {
+      top: 50%; }
+  .listingInfo h4 {
+    padding-top: 10px; }
+  .listingFeedback {
+    margin-top: 0;
+    border: none;
+    width: 50%; }
+  .listingImage {
+    border: 1px solid #687F9E;
+    border-radius: 10px;
+    background-color: black;
+    width: 375px;
+    height: 250px;
+    overflow: hidden; }
+    .listingImage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .moreListingsUser {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 0.5fr));
+    grid-gap: 10px; }
+    .moreListingsUser h4 {
+      width: 100%; }
+  .itemListing {
+    width: 100%; } }
+
+@media only screen and (min-width: 1440px) {
+  .listing .container {
+    max-width: 60%; }
+  .listingImage {
+    width: 520px;
+    height: 300px; } }
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -416,6 +606,15 @@ nav {
   margin: 0;
   text-decoration: none;
   box-sizing: border-box; }
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: white;
+  height: 54px; }
 
 a {
   color: inherit; }
@@ -453,4 +652,4 @@ select option {
 
 @media only screen and (min-width: 1440px) {
   .container {
-    max-width: 75%; } }
+    max-width: 60%; } }

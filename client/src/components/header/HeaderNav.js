@@ -3,15 +3,14 @@ import search from "../../assets/images/search.png";
 import location from "../../assets/images/location.png";
 import avatar from "../../assets/images/cloudStrife.png";
 
-function HeaderNav (props) {
+function HeaderNav(props) {
     console.log(!props.searchToggle)
     return (
         <nav>
             <div className={`container grid ${props.authenticated && 'desktopAuthGrid'}`}>
                 <h3>trad'r</h3>
-
                 <form action="" className={`navForm flex`}>
-                    <div className={`searchInput ${props.searchToggle  ? "hidden" : undefined}`}>
+                    <div className={`searchInput ${props.searchToggle ? "hidden" : undefined}`}>
                         <input type="text" placeholder={"Search"}
                                onClick={props.browserWidth < 767 && !props.searchToggle ? props.toggleSearchMenu : undefined}/>
                         <img src={search} alt="" className={"searchImage"}/>
@@ -20,24 +19,26 @@ function HeaderNav (props) {
                         <input type="text" placeholder={"Location"}/>
                         <img src={location} alt=""/>
                         <button className={props.browserWidth < 767 ? "hidden" : undefined}>Search</button>
-
                     </div>
 
                 </form>
 
-                <ul className={`${props.browserWidth < 1024 ? "hidden" : "flex"} loginSignup`}>
-                    {!props.authenticated && (
-                        <li className={`flex`}>
-                            {/*    /!*    /!*todo -- if authenticated is true Sign up is hidden and log in becomes log out; An avatar  is then placed to the right of the page which will be a link to the dashboard*!/*!/*/}
-                            <i className="material-icons">person_add</i>
-                            <a href="">Sign up</a>
-                        </li>
-                    )}
+                <div className={`${props.browserWidth < 1024 ? "hidden" : "flex"} loginSignup`}>
+                    <ul>
+                        {!props.authenticated && (
+                            <li className={`flex`}>
+                                {/*    /!*    /!*todo -- if authenticated is true Sign up is hidden and log in becomes log out; An avatar  is then placed to the right of the page which will be a link to the dashboard*!/*!/*/}
+                                <i className="material-icons">person_add</i>
+                                <a href="">Sign up</a>
+                            </li>
+                        )}
 
-                    <li className={`${props.authenticated ? 'hidden' : 'flex'} `}>
-                        <i className="material-icons">person</i>
-                        <a href="">Log in</a>
-                    </li>
+                        <li className={`${props.authenticated ? 'hidden' : 'flex'} `}>
+                            <i className="material-icons">person</i>
+                            <a href="">Log in</a>
+                        </li>
+                    </ul>
+
                     {/*  todo - display only if the user is logged in*/}
                     {
                         props.authenticated && (
@@ -62,12 +63,15 @@ function HeaderNav (props) {
                                     <i className="material-icons">apps</i>
                                     My Listings
                                 </li>
+                                <li>{props.authenticated && (
+                                    <div className={"navAvatar"}>
+                                        <img src={avatar} alt=""/>
+                                    </div>)}
+                                </li>
                             </ul>
                         )
                     }
-                    {props.authenticated && (<li className={"navAvatar"}><img src={avatar} alt=""/></li>)}
-                </ul>
-
+                </div>
 
                 <i className={`material-icons ${props.browserWidth > 1023 && "hidden"} hamburger`}
                    onClick={props.toggleNavMenu}>menu</i>
@@ -78,4 +82,5 @@ function HeaderNav (props) {
 
     )
 }
+
 export default HeaderNav;

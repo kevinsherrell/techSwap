@@ -4,6 +4,15 @@
 // ItemListing.js
 @import 'queryMixins';
 
+.main {
+  width: 100%;
+  margin-top: 54px;
+}
+
+.content {
+  width: 100%;
+}
+
 .browse {
   position: relative;
   margin: 20px 0;
@@ -128,10 +137,61 @@
 
 
 @include responsive($large-desktop) {
+  .sidebar {
+    padding: 10px;
+    border-right: 1px solid black;
+    //border-radius: 15px;
+    overflow: hidden;
+    //background-color: #687F9E;
+    //  box-shadow: 2px 2px 11px rgba(0,0,0,.3);
+
+    color: #687F9E;
+    margin-top: 20px;
+    position: fixed;
+    left: 2.5%;
+    width: 18%;
+    min-height: 50%;
+    button{
+      margin-top: 25px;
+      //margin-left: auto;
+      padding: 5px;
+      width: 50%;
+      background-color: #687F9E;
+      color: white;
+      border: none;
+      border-radius: 15px;
+    }
+  }
+  .content {
+    margin-left: 20%;
+    right: 0;
+    width: 80%;
+  }
   .browse {
     .grid {
       grid-template-columns: .2fr .2fr .2fr .2fr 1fr;
     }
 
   }
+  .searchUpdate {
+    flex-direction: column;
+    h4{
+      margin: 10px 0 ;
+    }
+  }
+  .priceInputSB, .distanceInputSB {
+
+    input {
+      padding-left: 6px;
+      width: 30%;
+    }
+  }
+}
+
+@include responsive($xl-desktop) {
+  .sidebar {
+    left: 12.5%;
+    width: 14%;
+  }
+
 }
