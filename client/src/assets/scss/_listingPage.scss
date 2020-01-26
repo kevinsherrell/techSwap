@@ -229,6 +229,9 @@
 
 }
 
+@include responsive($large-desktop){
+
+}
 @include responsive($xl-desktop) {
   .listing {
     .container {
