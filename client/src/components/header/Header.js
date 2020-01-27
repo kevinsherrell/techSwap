@@ -13,7 +13,7 @@ import avatar from '../../assets/images/cloudStrife.png'
 class Header extends React.Component {
     state = {
         browserWidth: window.innerWidth,
-        searchToggle: false,
+        searchToggle: true,
         searchMenuFilter: false,
         navMenuToggle: false,
         authenticated: true
@@ -52,7 +52,7 @@ class Header extends React.Component {
         return (
             <header className={"header"}>
                 <HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
-                {/*<SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
+                <SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
                 {/*<NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
             </header>
         )

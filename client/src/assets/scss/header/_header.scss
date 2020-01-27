@@ -278,6 +278,7 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
+      width: 100%;
     }
 
     &__logged-out-item {
@@ -291,6 +292,7 @@
       &:hover {
         color: white;
         background-color: #687F9E;
+
       }
 
       &:last-child {
@@ -306,6 +308,9 @@
 
     &__logged-out-link {
       color: #687F9E;
+      &:hover{
+        color: white;
+      }
     }
 
     &__logged-in {
