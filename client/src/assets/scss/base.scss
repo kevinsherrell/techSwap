@@ -1,5 +1,5 @@
 @import "queryMixins";
-@import "header";
+@import "header/header";
 //@import "dashboard";
 @import "main";
 @import "listingPage";
@@ -67,7 +67,7 @@ select option{
 }
 @include responsive($xl-desktop){
 .container{
-  max-width: 60%;
+  max-width: 75%;
   //max-width: 60%;
 }
 }

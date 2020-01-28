@@ -50,7 +50,7 @@ class Header extends React.Component {
         console.log("Browser Width: " + this.state.browserWidth)
 
         return (
-            <header>
+            <header className={"header"}>
                 <HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
                 <SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
                 <NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>

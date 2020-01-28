@@ -25,70 +25,65 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div className="main">
-                <div className="container flex">
+            <div className="home">
+                <div className="home__inner-container container">
                     <div className={`sidebar ${this.state.browserWidth < 1023 && 'hidden'}`}>
-                        <h4>Categories: </h4>
-                        <ul>
-                            <li>Computers</li>
-                            <li>Tablets</li>
-                            <li>Phones</li>
-                            <li>TVs</li>
-                            <li>Video Games/Consoles</li>
-                            <li>Appliances</li>
-                            <li>Vehicle</li>
+                        <h4 className={'sidebar__category-header'}>Categories: </h4>
+                        <ul className={'sidebar__category-list'}>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Computers</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Tablets</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Phones</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>TVs</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Video Games/Consoles</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Appliances</a></li>
+                            <li className={'sidebar__category-list-item'}><a href="" className={'sidebar__category-list-link'}>Vehicle</a></li>
                         </ul>
-                        <form className="searchUpdate flex">
-                            <h4>Condition: </h4>
-                            <ul>
-                                <li><input type="radio" name={'condition'} value={'new'}/> New</li>
-                                <li><input type="radio" name={'condition'} value={'used'}/> Used</li>
-                                <li><input type="radio" name={'condition'} value={'damaged'}/> Damaged</li>
-                                <li><input type="radio" name={'condition'} value={'broken'}/> Broken</li>
+                        <form className="sidebar__update-form">
+                            <h4 className={'sidebar__update-form-condition-header'}>Condition: </h4>
+                            <ul className={'sidebar__update-form-condition-list'}>
+                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio" name={'condition'} value={'new'} className={'sidebar__update-form-condition-list-input'}/> New</li>
+                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio" name={'condition'} value={'used'} className={'sidebar__update-form-condition-list-input'}/> Used</li>
+                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio" name={'condition'} value={'damaged'} className={'sidebar__update-form-condition-list-input'}/> Damaged</li>
+                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio" name={'condition'} value={'broken'} className={'sidebar__update-form-condition-list-input'}/> Broken</li>
                             </ul>
 
-                            <h4>Price: </h4>
-                            <div className="priceInputSB">
-                                <input type="text" placeholder={'min'}/> To <input type="text" placeholder={'max'}/>
+                            <h4 className={'sidebar__update-form-price-header'}>Price: </h4>
+                            <div className="sidebar__update-form-price-wrapper">
+                                <input type="text" placeholder={'min'} className={'sidebar__update-form-price-input'}/> To <input type="text" placeholder={'max'} className={'sidebar__update-form-price-input'}/>
                             </div>
 
-                            <h4>Miles (from your location): </h4>
-                            <div className="distanceInputSB">
-                                <input type="text" placeholder={'miles'}/> from <input type="text" placeholder={'zip'}/>
+                            <h4 className={'sidebar__update-form-distance-header'}>Miles (from your location): </h4>
+                            <div className="sidebar__update-form-distance-wrapper">
+                                <input type="text" placeholder={'miles'} className={'sidebar__update-form-distance-input'}/> from <input type="text" placeholder={'zip'} className={'sidebar__update-form-distance-input'}/>
                             </div>
-                            <button>Update Search</button>
+                            <button className={'sidebar__update-form-submit'}>Update Search</button>
                         </form>
                     </div>
                     <div className={"content"}>
-                        <section className="browse">
-                            <div className="flex">
-                                <div className={"categories"} onClick={this.handleCatMenu}>
-                                    <p>Sort/Filter: All <i
-                                        className="material-icons">keyboard_arrow_down</i></p>
+                        <section className="content__sort-header ">
+                                <div className={'content__sort-menu-wrapper'} onClick={this.handleCatMenu}>
+                                    <p className={'content__sort-menu-btn'}>Sort/Filter: All <i
+                                        className="content__sort-menu-icon material-icons">keyboard_arrow_down</i></p>
 
 
-                                    <div className={`${this.state.catMenuOpened ? "categoryMenu" : "catMenuClosed"}`}>
-                                        <ul>
-                                            <li>Computers</li>
-                                            <li>Tablets</li>
-                                            <li>Phones</li>
-                                            <li>TVs</li>
-                                            <li>Appliances</li>
-                                            <li>Vehicles</li>
+                                    <div className={`${this.state.catMenuOpened ? "content__sort-menu-drop-down--open" : "content__sort-menu-drop-down--closed"}`}>
+                                        <ul className={'content__sort-menu-drop-down-list'}>
+                                            <li className={'content__sort-menu-drop-down-item'}>Oldest</li>
+                                            <li className={'content__sort-menu-drop-down-item'}>Newest</li>
+                                            <li className={'content__sort-menu-drop-down-item'}>Price: low to high</li>
+                                            <li className={'content__sort-menu-drop-down-item'}>Price: high to low</li>
+                                            <li className={'content__sort-menu-drop-down-item'}>Distance: closest</li>
                                         </ul>
                                     </div>
                                 </div>
 
 
-                                <p className={"listingsNear"}>Listings near you</p>
-
-                            </div>
-
+                                <p className={"content__sort-description"}>Listings near you</p>
                         </section>
-                        <section className="listings">
-                            <div className="grid">
+                        <section className="content__listings">
+                            {/*<div className="content__listings-wrapper">*/}
                                 {this.state.items.map(item => <ItemListing/>)}
-                            </div>
+                            {/*</div>*/}
                         </section>
                     </div>
 

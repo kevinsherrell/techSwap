@@ -4,87 +4,143 @@
 // ItemListing.js
 @import 'queryMixins';
 
-.main {
+
+.home {
   width: 100%;
   margin-top: 54px;
+
+  &__inner-container {
+    display: flex;
+  }
+}
+
+.sidebar {
+  display: none;
+
+  &__category-header {
+  }
+
+  &__category-list {
+  }
+
+  &__category-list-item {
+  }
+
+  &__category-list-link {
+  }
+
+  &__update-form {
+    display: flex;
+  }
+
+  &__update-form-condition-header {
+  }
+
+  &__update-form-condition-list {
+  }
+
+  &__update-form-condition-list-item {
+  }
+
+  &__update-form-condition-list-link {
+  }
+
+  &__update-form-price-header {
+  }
+
+  &__update-form-price-wrapper {
+  }
+
+  &__update-form-price-input {
+  }
+
+  &__update-form-distance-header {
+  }
+
+  &__update-form-distance-wrapper {
+  }
+
+  &__update-form-distance-input {
+  }
+
+  &__update-form-submit {
+  }
 }
 
 .content {
   width: 100%;
-}
 
-.browse {
-  position: relative;
-  margin: 20px 0;
-  color: #687F9E;
-
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  &__sort-header {
+    display: flex;
+    position: relative;
+    margin: 20px 0;
+    color: #687F9E;
   }
 
-  i {
+  &__sort-menu-wrapper {
+    position: relative;
+    padding-left: 10px;
+
+    &:hover {
+      cursor: grab;
+    }
+  }
+
+  &__sort-menu-btn {
+  }
+
+  &__sort-menu-icon {
     font-size: 16px;
   }
-}
 
-.categories {
-  //border-right: 1px solid grey;
-  position: relative;
-  padding-left: 10px;
+  &__sort-menu-drop-down {
+    &--open {
+      position: absolute;
+      top: 100%;
+      z-index: 1;
+      overflow: hidden;
+      border-radius: 0 0px 15px 15px;
+      border: 1px solid #687F9E;
+      width: 200px;
+      height: auto;
+      transition: height 100ms;
+      background-color: white;
+    }
 
-  &:hover {
-    cursor: grab;
+    &--closed {
+      position: absolute;
+      visibility: hidden;
+      height: 0;
+    }
   }
-}
 
-.catMenuClosed {
-  position: absolute;
-  visibility: hidden;
-
-  height: 0;
-}
-
-.categoryMenu {
-  position: absolute;
-  //left: 88px;
-  top: 100%;
-  z-index: 1;
-  overflow: hidden;
-  border-radius: 0 0px 15px 15px;
-  border: 1px solid #687F9E;
-  width: 200px;
-  height: 230px;
-  transition: height 100ms;
-  //padding: 10px;
-  background-color: white;
-
-  ul {
+  &__sort-menu-drop-down-list {
     width: 100%;
   }
 
-  li {
+  &__sort-menu-drop-down-item {
     padding: 10px;
+
+    &:hover {
+      background-color: #687F9E;
+      color: white;
+    }
   }
 
-  li:hover {
-    background-color: #687F9E;
-    color: white;
+  &__sort-description {
+    margin-left: auto;
   }
-}
 
-.listingsNear {
-  margin-left: auto;
-}
-
-.listings {
-
-  .grid {
+  &__listings {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 10px;
   }
+
 }
 
-.itemListing {
+.item-listing {
+  display: flex;
   position: relative;
   border-radius: 10px;
   flex-direction: column;
@@ -93,28 +149,42 @@
   overflow: hidden;
   border: 1px solid #687F9E;
 
-}
+  &__image {
+    background-image: url("https://source.unsplash.com/random/300x300");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 205px;
+  }
 
-.itemImage {
-  min-height: 205px;
-}
+  &__item-info {
+    background-color: white;
+    width: 100%;
+  }
 
-.itemInfo {
-  //position: absolute;
-  //bottom: 0;
-  background-color: white;
-  width: 100%;
-
-  p {
+  &__item-info-title {
     font-size: 14px;
     padding: 5px;
-    //height: 40%;
+    width: 100%;
+    color: #687F9E;
+  }
+
+  &__item-info-price {
+    font-size: 14px;
+    padding: 5px;
+    width: 100%;
+    color: #687F9E;
+  }
+
+  &__item-info-location {
+    font-size: 14px;
+    padding: 5px;
     width: 100%;
     color: #687F9E;
   }
 }
 
-.listAnItem {
+.list-an-item {
   position: sticky;
   background-color: white;
   bottom: 0;
@@ -124,7 +194,7 @@
   padding: 10px 0;
   width: 100%;
 
-  a {
+  &__link {
     border-radius: 10px;
     padding: 5px;
     display: block;
@@ -135,15 +205,13 @@
   }
 }
 
-
 @include responsive($large-desktop) {
   .sidebar {
+    display: initial;
     padding: 10px;
     border-right: 1px solid black;
-    //border-radius: 15px;
     overflow: hidden;
-    //background-color: #687F9E;
-    //  box-shadow: 2px 2px 11px rgba(0,0,0,.3);
+
 
     color: #687F9E;
     margin-top: 20px;
@@ -151,11 +219,37 @@
     left: 2.5%;
     width: 18%;
     min-height: 50%;
-    button{
+
+    &__update-form {
+      flex-direction: column;
+    }
+
+    &__update-form-condition-header {
+      margin: 10px 0;
+    }
+
+    &__update-form-price-header {
+      margin: 10px 0;
+    }
+
+    &__update-form-price-input {
+      padding-left: 6px;
+      width: 30%;
+    }
+
+    &__update-form-distance-header {
+      margin: 10px 0;
+    }
+
+    &__update-form-distance-input {
+      padding-left: 6px;
+      width: 30%;
+    }
+
+    &__update-form-submit {
       margin-top: 25px;
-      //margin-left: auto;
       padding: 5px;
-      width: 50%;
+      width: 60%;
       background-color: #687F9E;
       color: white;
       border: none;
@@ -166,32 +260,21 @@
     margin-left: 20%;
     right: 0;
     width: 80%;
-  }
-  .browse {
-    .grid {
-      grid-template-columns: .2fr .2fr .2fr .2fr 1fr;
-    }
 
-  }
-  .searchUpdate {
-    flex-direction: column;
-    h4{
-      margin: 10px 0 ;
+    &__listings {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-gap: 10px;
     }
   }
-  .priceInputSB, .distanceInputSB {
 
-    input {
-      padding-left: 6px;
-      width: 30%;
-    }
-  }
 }
 
 @include responsive($xl-desktop) {
   .sidebar {
-    left: 12.5%;
+    left: 11.9%;
     width: 14%;
   }
-
 }
+
+
+

@@ -5,46 +5,52 @@ import location from "../../assets/images/location.png";
 function SearchMenu(props) {
     console.log(props)
     return (
-        <div className={`searchMenu ${props.searchToggle === false && "hidden"}`}>
-            <div className="container grid">
-                <div className="searchMenuTop">
-                    <h3>trad'r</h3>
-                    <i className="material-icons" onClick={props.toggleSearchMenu}>close</i>
+        <div className={`header__search-menu ${props.searchToggle === false && "hidden"}`}>
+            <div className="header__search-menu-inner-container container">
+                <div className="header__search-menu-header">
+                    <h3 className={'header__search-menu-logo'}>trad'r</h3>
+                    <i className="header__search-menu-close material-icons" onClick={props.toggleSearchMenu}>close</i>
                 </div>
-                <form action="" className="searchMenuForm">
-                    <div className="searchInput">
-                        <input type="text" placeholder={"Search"}/>
-                        <img src={search} alt=""/>
+                <form action="" className="header__search-menu-form">
+                    <div className="header__search-menu-search-wrapper">
+                        <input className={'header__search-menu-search-input'} type="text" placeholder={"Search"}/>
+                        <img className={'header__search-menu-search-image'} src={search} alt=""/>
                     </div>
-                    <div className="locationInput">
-                        <input type="text" placeholder={"Location"}/>
-                        <img src={location} alt=""/>
+                    <div className="header__search-menu-location-wrapper">
+                        <input className={'header__search-menu-location-input'} type="text" placeholder={"Location"}/>
+                        <img className={'header__search-menu-location-image'} src={location} alt=""/>
                     </div>
-                    <div className="searchMenuControls">
-                        <button type={"button"} onClick={props.toggleSearchMenuFilter}>Filter <i
-                            className="material-icons">{props.searchMenuFilter  ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i>
+                    <div className="header__search-menu-controls">
+                        <button className={'header__search-menu-filter-toggle'} type={"button"}
+                                onClick={props.toggleSearchMenuFilter}>Filter <i
+                            className="header__search-menu-filter-icon material-icons">{props.searchMenuFilter ? "keyboard_arrow_up" : "keyboard_arrow_down"}</i>
                         </button>
-                        <button className={props.searchMenuFilter ? "hidden" : undefined}>Search</button>
+                        <button
+                            className={`header__search-menu-no-filter-submit ${props.searchMenuFilter ? "header__search-menu-no-filter-submit--filter-true" : undefined}`}>Search
+                        </button>
                     </div>
-                    <div className={`filterOptions ${!props.searchMenuFilter && "hidden"}`}>
-                        <div className="price flex">
-                            <label>Price</label>
-                            <div className={"priceInput flex"}>
-                                $<input type="number" max={"999"} placeholder={"Min"}/>
+                    <div className={`header__search-menu-filter-options ${!props.searchMenuFilter && "hidden"}`}>
+                        <div className="header__search-menu-price-outer-wrapper">
+                            <label className={'header__search-menu-price-label'}>Price</label>
+                            <div className={"header__search-menu-price-inner-wrapper"}>
+                                $<input className={'header__search-menu-price-input'} type="number" max={"999"}
+                                        placeholder={"Min"}/>
                                 {/*<p>To</p>*/}
-                                $<input type="number" max={"999"} placeholder={"Max"}/>
+                                $<input className={'header__search-menu-price-input'} type="number" max={"999"}
+                                        placeholder={"Max"}/>
                             </div>
                         </div>
-                        <div className="distance flex">
-                            <label>Distance</label>
-                            <div className="distanceInput flex">
-                                <input type="text" placeholder={"Miles"}/>
+                        <div className="header__search-menu-distance-outer-wrapper">
+                            <label className={'header__search-menu-distance-label'}>Distance</label>
+                            <div className="header__search-menu-distance-inner-wrapper">
+                                <input className={'header__search-menu-distance-input'} type="text"
+                                       placeholder={"Miles"}/>
                                 {/*<p>mi.</p>*/}
                             </div>
                         </div>
-                        <div className="category flex">
-                            <label>Category</label>
-                            <select className={"categoryInput"}>
+                        <div className="header__search-menu-category-wrapper">
+                            <label className={'header__search-menu-category-label'}>Category</label>
+                            <select className={"header__search-menu-category-input"}>
                                 <option value="computers">Computers</option>
                                 <option value="tablets">Tablets</option>
                                 <option value="phones">Phones</option>
@@ -53,9 +59,9 @@ function SearchMenu(props) {
                                 <option value="vehicles">Vehicles</option>
                             </select>
                         </div>
-                        <div className="sortBy flex">
-                            <label>Sort by</label>
-                            <select className={"sortInput"}>
+                        <div className="header__search-menu-sort-wrapper">
+                            <label className={'header__search-menu-sort-label'}>Sort by</label>
+                            <select className={"header__search-menu-sort-input"}>
                                 <option value="date">Date</option>
                                 <option value="priceLow">Price: low to high</option>
                                 <option value="priceHigh">Price: high to low</option>
@@ -63,11 +69,12 @@ function SearchMenu(props) {
                             </select>
                         </div>
 
-                        <button>Search</button>
+                        <button className={'header__search-menu-filter-submit'}>Search</button>
                     </div>
                 </form>
             </div>
         </div>
     )
 }
+
 export default SearchMenu;

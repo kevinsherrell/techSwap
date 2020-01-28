@@ -6,66 +6,71 @@ import avatar from "../../assets/images/cloudStrife.png";
 function HeaderNav(props) {
     console.log(!props.searchToggle)
     return (
-        <nav>
-            <div className={`container grid ${props.authenticated && 'desktopAuthGrid'}`}>
-                <h3>trad'r</h3>
-                <form action="" className={`navForm flex`}>
-                    <div className={`searchInput ${props.searchToggle ? "hidden" : undefined}`}>
-                        <input type="text" placeholder={"Search"}
+        <nav className={'header__nav'}>
+            <div
+                className={`header__nav-inner-container ${props.authenticated && 'header__nav-inner-container--authenticated'} container`}>
+                <h3 className={'header__logo'}>trad'r</h3>
+                <form action="" className={`header__nav-search-form flex`}>
+                    <div className={`header__search-input-wrapper ${props.searchToggle ? "hidden" : undefined}`}>
+                        <input className={'header__search-input'} type="text" placeholder={"Search"}
                                onClick={props.browserWidth < 767 && !props.searchToggle ? props.toggleSearchMenu : undefined}/>
-                        <img src={search} alt="" className={"searchImage"}/>
+                        <img src={search} alt="" className={"header__search-image"}/>
                     </div>
-                    <div className={`locationInput ${props.browserWidth < 767 && "hidden"}`}>
-                        <input type="text" placeholder={"Location"}/>
-                        <img src={location} alt=""/>
-                        <button className={props.browserWidth < 767 ? "hidden" : undefined}>Search</button>
+                    <div className={`header__location-input-wrapper`}>
+                        <input className={'header__location-input'} type="text" placeholder={"Location"}/>
+                        <img className={'header__location-image'} src={location} alt=""/>
+                        <button
+                            className={`header__search-submit`}>Search
+                        </button>
                     </div>
 
                 </form>
 
-                <div className={`${props.browserWidth < 1024 ? "hidden" : "flex"} loginSignup`}>
-                    <ul>
-                        {!props.authenticated && (
-                            <li className={`flex`}>
-                                {/*    /!*    /!*todo -- if authenticated is true Sign up is hidden and log in becomes log out; An avatar  is then placed to the right of the page which will be a link to the dashboard*!/*!/*/}
-                                <i className="material-icons">person_add</i>
-                                <a href="">Sign up</a>
-                            </li>
-                        )}
+                <div className={`header__auth-navigation`}>
+                    {!props.authenticated && (
+                        <ul className={'header__logged-out'}>
+                            <>
+                                <li className={`header__logged-out-item`}>
+                                    {/*    /!*    /!*todo -- if authenticated is true Sign up is hidden and log in becomes log out; An avatar  is then placed to the right of the page which will be a link to the dashboard*!/*!/*/}
+                                    <i className="header__logged-out-icon material-icons">person_add</i>
+                                    <a href="" className={'header__logged-out-link'}>Sign up</a>
+                                </li>
+                                <li className={`header__logged-out-item`}>
+                                    <i className="header__logged-out-icon material-icons">person</i>
+                                    <a href="" className={'header__logged-out-link'}>Log in</a>
+                                </li>
+                            </>
+                        </ul>
+                    )}
 
-                        <li className={`${props.authenticated ? 'hidden' : 'flex'} `}>
-                            <i className="material-icons">person</i>
-                            <a href="">Log in</a>
-                        </li>
-                    </ul>
 
                     {/*  todo - display only if the user is logged in*/}
                     {
                         props.authenticated && (
-                            <ul className="authNav flex">
-                                <li>
-                                    <i className="material-icons">home</i>
+                            <ul className="header__logged-in">
+                                <li className={'header__logged-in-item'}>
+                                    <i className="header__logged-in-icon material-icons">home</i>
                                     Home
                                 </li>
-                                <li>
-                                    <i className="material-icons">notifications</i>
+                                <li className={'header__logged-in-item'}>
+                                    <i className="header__logged-in-icon material-icons">notifications</i>
                                     Notifications
                                 </li>
-                                <li>
-                                    <i className="material-icons">chat</i>
+                                <li className={'header__logged-in-item'}>
+                                    <i className="header__logged-in-icon material-icons">chat</i>
                                     Messages
                                 </li>
-                                <li>
-                                    <i className="material-icons">add_box</i>
+                                <li className={'header__logged-in-item'}>
+                                    <i className="header__logged-in-icon material-icons">add_box</i>
                                     List An Item
                                 </li>
-                                <li>
-                                    <i className="material-icons">apps</i>
+                                <li className={'header__logged-in-item'}>
+                                    <i className="header__logged-in-icon material-icons">apps</i>
                                     My Listings
                                 </li>
-                                <li>{props.authenticated && (
-                                    <div className={"navAvatar"}>
-                                        <img src={avatar} alt=""/>
+                                <li className={'header__logged-in-item'}>{props.authenticated && (
+                                    <div className={"header__logged-in-avatar-wrapper"}>
+                                        <img src={avatar} alt="" className={'header__logged-in-avatar-image'}/>
                                     </div>)}
                                 </li>
                             </ul>
@@ -73,7 +78,7 @@ function HeaderNav(props) {
                     }
                 </div>
 
-                <i className={`material-icons ${props.browserWidth > 1023 && "hidden"} hamburger`}
+                <i className={`material-icons ${props.browserWidth > 1023 && "hidden"} header__hamburger`}
                    onClick={props.toggleNavMenu}>menu</i>
             </div>
 
