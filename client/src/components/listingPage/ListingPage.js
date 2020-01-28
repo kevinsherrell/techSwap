@@ -39,61 +39,61 @@ class ListingPage extends React.Component {
 
         return (
 
-            <div className="listingPage">
+            <div className="listing-page">
 
-                <div className="container flex">
+                <div className="listing-page__inner-container container">
 
-                    <div className="listingMain flex">
+                    <div className="listing-page__listing-main">
 
-                        <section className="listingImage"
+                        <section className="listing-page__listing-image-section"
                                  onClick={() => this.handleSlider(this.state.sliderImageIndex, this.state.sliderImages)}>
-                            <img src={this.state.sliderImages[this.state.sliderImageIndex]} alt=""/>
-                            <p>Trade + $250</p>
-                            <p>View photos (5)</p>
+                            <img className={'listing-page__listing-image'} src={this.state.sliderImages[this.state.sliderImageIndex]} alt=""/>
+                            <p className={'listing-page__price-btn'}>Trade + $250</p>
+                            <p className={'listing-page__photo-btn'}>View photos (5)</p>
 
                         </section>
-                        <section className="listingInfo">
+                        <section className="listing-page__info-section">
 
 
-                            <div className="listingUser flex">
-                                <sub>Posted 3 days ago by: </sub>
-                                <p>Cloud Strife</p>
-                                <div className="listingAvatar">
-                                    <img src={cloud} alt=""/>
+                            <div className="listing-page__user-wrapper">
+                                <sub className={'listing-page__age'}>Posted 3 days ago by: </sub>
+                                <p className={'listing-page__name'}>Cloud Strife</p>
+                                <div className="listing-page__avatar-wrapper">
+                                    <img className={'listing-page__avatar-image'} src={cloud} alt=""/>
                                 </div>
                             </div>
-                            <h4>Final Fantasy Remake</h4>
+                            <h4 className={'listing-page__title'}>Final Fantasy Remake</h4>
                             {/*<p>Trade + $250</p>*/}
-                            <p>Belleville, IL</p>
-                            <h4>Description</h4>
-                            <p>
+                            <p className={'listing-page__location'}>Belleville, IL</p>
+                            <h4 className={'listing-page__description-header'}>Description</h4>
+                            <p className={'listing-page__description-text'}>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur expedita nisi
                                 ullam. Alias commodi debitis illum nemo provident quas reiciendis.
                             </p>
-                            <h4>Will trade for:</h4>
-                            <p>Macbook Pro, PS4 Pro, Motorcycle</p>
+                            <h4 className={'listing-page__wanted-header'}>Will trade for:</h4>
+                            <p className={'listing-page__wanted'}>Macbook Pro, PS4 Pro, Motorcycle</p>
                         </section>
                     </div>
-                    <div className="listingFeedback">
+                    <div className="listing-page__contact-section">
 
 
-                        <img src={map} alt=""/>
+                        <img className={'listing-page__map'} src={map} alt=""/>
 
-                        <form action="" className="offerForm">
-                            <textarea name="makeAnOffer" id="makeAnOffer" cols="30" rows="10"
+                        <form action="" className="listing-page__offer-form">
+                            <textarea className={'listing-page__offer-form-input'} name="makeAnOffer" id="makeAnOffer" cols="30" rows="10"
                                       placeholder={'Send message or make an offer!'}></textarea>
-                            <button>Send</button>
+                            <button className={'listing-page__offer-form-submit'}>Send</button>
                         </form>
                     </div>
                 </div>
-                <div className="otherListings">
-                    <h4 className={'container'}>More listings from Cloud Strife: </h4>
+                <div className="listing-page__other-listings-section">
+                    <h4 className={'listing-page__listings-by-user-header container'}>More listings from Cloud Strife: </h4>
 
-                    <div className="moreListingsUser container grid">
+                    <div className="listing-page__listings-by-user-wrapper container">
                         {this.state.listingsFromUser.map(item => <ItemListing/>)}
                     </div>
-                    <h4 className={'container'}>Similar listings near you:</h4>
-                    <div className="moreListingsUser container grid">
+                    <h4 className={'listing-page__listings-near-you-header container'}>Similar listings near you:</h4>
+                    <div className="listing-page__listings-near-you-wrapper container grid">
                         {this.state.listingsFromUser.map(item => <ItemListing/>)}
                     </div>
                 </div>

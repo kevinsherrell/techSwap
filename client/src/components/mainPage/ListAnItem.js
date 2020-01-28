@@ -23,10 +23,10 @@ function ListAnItem() {
     })
     console.log(window.innerWidth)
     return (
-        <section className="listAnItem">
+        <section className="list-an-item">
             <div className="container" onClick={mobileToggle}>
                 {browserWidth < 650  && (
-                    <a href={""}>List an item!</a>
+                    <a className={'list-an-item__link'} href={""}>List an item!</a>
                 )}
             </div>
         </section>
