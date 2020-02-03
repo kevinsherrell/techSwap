@@ -24,9 +24,14 @@
   }
 
   &__category-list-item {
+    padding: 5px 0;
   }
 
   &__category-list-link {
+    &:hover{
+      text-decoration: underline;
+      opacity: .6;
+    }
   }
 
   &__update-form {
@@ -212,13 +217,13 @@
     border-right: 1px solid black;
     overflow: hidden;
 
-
     color: #687F9E;
     margin-top: 20px;
     position: fixed;
     left: 2.5%;
     width: 18%;
     min-height: 50%;
+
 
     &__update-form {
       flex-direction: column;

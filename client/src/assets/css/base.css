@@ -503,6 +503,11 @@
 
 .sidebar {
   display: none; }
+  .sidebar__category-list-item {
+    padding: 5px 0; }
+  .sidebar__category-list-link:hover {
+    text-decoration: underline;
+    opacity: .6; }
   .sidebar__update-form {
     display: flex; }
 

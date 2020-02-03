@@ -16,7 +16,7 @@ class Header extends React.Component {
         searchToggle: false,
         searchMenuFilter: false,
         navMenuToggle: false,
-        authenticated: true
+        authenticated: false
     }
 
     componentDidMount() {
