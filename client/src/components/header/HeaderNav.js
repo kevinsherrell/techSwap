@@ -3,17 +3,21 @@ import search from "../../assets/images/search.png";
 import location from "../../assets/images/location.png";
 import avatar from "../../assets/images/cloudStrife.png";
 
-function HeaderNav(props) {
-    console.log(!props.searchToggle)
-    return (
+class HeaderNav extends React.Component{
+    state = {
+
+    }
+
+    render(){
+        return (
         <nav className={'header__nav'}>
             <div
-                className={`header__nav-inner-container ${props.authenticated && 'header__nav-inner-container--authenticated'} container`}>
+                className={`header__nav-inner-container ${this.props.authenticated && 'header__nav-inner-container--authenticated'} container`}>
                 <h3 className={'header__logo'}>trad'r</h3>
                 <form action="" className={`header__nav-search-form flex`}>
-                    <div className={`header__search-input-wrapper ${props.searchToggle ? "hidden" : undefined}`}>
+                    <div className={`header__search-input-wrapper ${this.props.searchToggle ? "hidden" : undefined}`}>
                         <input className={'header__search-input'} type="text" placeholder={"Search"}
-                               onClick={props.browserWidth < 767 && !props.searchToggle ? props.toggleSearchMenu : undefined}/>
+                               onClick={this.props.browserWidth < 767 && !this.props.searchToggle ? this.props.toggleSearchMenu : undefined}/>
                         <img src={search} alt="" className={"header__search-image"}/>
                     </div>
                     <div className={`header__location-input-wrapper`}>
@@ -27,7 +31,7 @@ function HeaderNav(props) {
                 </form>
 
                 <div className={`header__auth-navigation`}>
-                    {!props.authenticated && (
+                    {!this.props.authenticated && (
                         <ul className={'header__logged-out'}>
                             <>
                                 <li className={`header__logged-out-item`}>
@@ -46,7 +50,7 @@ function HeaderNav(props) {
 
                     {/*  todo - display only if the user is logged in*/}
                     {
-                        props.authenticated && (
+                        this.props.authenticated && (
                             <ul className="header__logged-in">
                                 <li className={'header__logged-in-item'}>
                                     <i className="header__logged-in-icon material-icons">home</i>
@@ -68,7 +72,7 @@ function HeaderNav(props) {
                                     <i className="header__logged-in-icon material-icons">apps</i>
                                     My Listings
                                 </li>
-                                <li className={'header__logged-in-item'}>{props.authenticated && (
+                                <li className={'header__logged-in-item'}>{this.props.authenticated && (
                                     <div className={"header__logged-in-avatar-wrapper"}>
                                         <img src={avatar} alt="" className={'header__logged-in-avatar-image'}/>
                                     </div>)}
@@ -78,14 +82,16 @@ function HeaderNav(props) {
                     }
                 </div>
 
-                <i className={`material-icons ${props.browserWidth > 1023 && "hidden"} header__hamburger`}
-                   onClick={props.toggleNavMenu}>menu</i>
+                <i className={`material-icons ${this.props.browserWidth > 1023 && "hidden"} header__hamburger`}
+                   onClick={this.props.toggleNavMenu}>menu</i>
             </div>
 
 
         </nav>
 
-    )
+        )
+    }
 }
+
 
 export default HeaderNav;

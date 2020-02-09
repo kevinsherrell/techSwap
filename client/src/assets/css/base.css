@@ -495,6 +495,154 @@
     right: 0;
     width: 0; } }
 
+.login-signup {
+  height: 100vh;
+  padding-top: 15%; }
+  .login-signup__close-icon {
+    position: absolute;
+    font-size: 24px;
+    top: 10px;
+    color: #687F9E; }
+  .login-signup__logo {
+    text-align: center;
+    font-size: 32px;
+    color: #687F9E; }
+  .login-signup__sub-header {
+    text-align: center;
+    font-size: 16px;
+    color: #687F9E; }
+
+.login-signup__signup-form {
+  margin-top: 20px; }
+
+.signup-form__row-1 {
+  display: flex;
+  justify-content: center; }
+
+.signup-form__first-name {
+  width: 50%;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+
+.signup-form__first-name-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__last-name {
+  width: 50%;
+  margin-bottom: 5px; }
+
+.signup-form__last-name-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__row-2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
+.signup-form__email {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.signup-form__email-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__password {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.signup-form__password-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__password-confirmation {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.signup-form__password-confirmation-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__row-3 {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
+.signup-form__location {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.signup-form__location-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.signup-form__submit {
+  text-align: right;
+  font-size: 20px;
+  color: #687F9E; }
+  .signup-form__submit:hover {
+    cursor: grab; }
+
+.login-signup__login-form {
+  margin-top: 20px; }
+
+.login-form__email {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.login-form__email-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.login-form__password {
+  width: 100%;
+  margin-bottom: 5px; }
+
+.login-form__password-input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid rgba(104, 127, 158, 0.3);
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px; }
+
+.login-form__submit {
+  text-align: right;
+  font-size: 20px;
+  color: #687F9E; }
+  .login-form__submit:hover {
+    cursor: grab; }
+
 .home {
   width: 100%;
   margin-top: 54px; }
@@ -564,7 +712,6 @@
   overflow: hidden;
   border: 1px solid #687F9E; }
   .item-listing__image {
-    background-image: url("https://source.unsplash.com/random/300x300");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

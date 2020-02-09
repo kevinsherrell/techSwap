@@ -9,6 +9,7 @@ import search from "../../assets/images/search.png"
 import location from "../../assets/images/location.png"
 import close from "../../assets/images/close.png"
 import avatar from '../../assets/images/cloudStrife.png'
+import LoginSignup from "./LoginSignup";
 
 class Header extends React.Component {
     state = {
@@ -16,7 +17,8 @@ class Header extends React.Component {
         searchToggle: false,
         searchMenuFilter: false,
         navMenuToggle: false,
-        authenticated: false
+        authenticated: false,
+        loginSignup: true,
     }
 
     componentDidMount() {
@@ -51,9 +53,10 @@ class Header extends React.Component {
 
         return (
             <header className={"header"}>
-                <HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
-                <SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
-                <NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>
+                {/*<HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
+                {/*<SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
+                {/*<NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
+                <LoginSignup/>
             </header>
         )
     }

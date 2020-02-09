@@ -1,12 +1,14 @@
 import React from 'react';
 import ListAnItem from "./ListAnItem";
 import ItemListing from "./ItemListing";
+import Axios from 'axios';
 
 class Main extends React.Component {
     state = {
-        items: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         catMenuOpened: false,
-        browserWidth: window.innerWidth
+        browserWidth: window.innerWidth,
+        listings: [],
+        listingImage: `url("https://source.unsplash.com/random/300×300")`
     }
     handleCatMenu = () => {
         this.setState({
@@ -21,6 +23,25 @@ class Main extends React.Component {
             })
             console.log(this.state.browserWidth)
         })
+
+       this.getListings();
+    }
+    getListings(){
+        Axios.get("http://localhost:8080/api/listing/all")
+            .then((response)=>{
+                console.log('working')
+                console.log(response);
+                this.setState({
+                    listings: response.data
+                })
+                console.log(this.state.listings)
+
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+
     }
 
     render() {
@@ -81,9 +102,7 @@ class Main extends React.Component {
                                 <p className={"content__sort-description"}>Listings near you</p>
                         </section>
                         <section className="content__listings">
-                            {/*<div className="content__listings-wrapper">*/}
-                                {this.state.items.map(item => <ItemListing/>)}
-                            {/*</div>*/}
+                                {this.state.listings.map(listing => <ItemListing key={listing.id} {...listing} listingImage={this.state.listingImage}/>)}
                         </section>
                     </div>
 
