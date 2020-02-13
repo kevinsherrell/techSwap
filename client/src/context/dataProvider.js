@@ -66,33 +66,36 @@ class DataProvider extends  React.Component{
     onLogoutUser = () => {
         this.setState({authenticatedUser: undefined, authenticated: false });
     }
-    onSubmitLogin = (loginData) => {
-        console.log("Login user")
-        axios.post("http://localhost:8080/api/user/login", loginData)
-            .then(response => {
-                console.log(response)
-                this.setState({authenticatedUser: response.data, authenticated: true});
-            })
 
-            .catch(error => {
-                console.log(error);
-                this.setState({authenticatedUser: undefined, authenticated: false });
-            })
-    };
-    onSubmitSignup = (signupData) => {
-        console.log("Sign up user")
-        axios.post("http://localhost:8080/api/user", signupData)
-            .then(response => {
-                console.log(response)
-                this.setState({authenticatedUser: response.data, authenticated: true});
-            })
+    // onSubmitLogin = (loginData) => {
+    //     console.log("Login user")
+    //     axios.post("http://localhost:8080/api/user/login", loginData)
+    //         .then(response => {
+    //             console.log(response)
+    //             this.setState({authenticatedUser: response.data, authenticated: true});
+    //         })
+    //
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.setState({authenticatedUser: undefined, authenticated: false });
+    //         })
+    // };
 
-            .catch(error => {
-                console.log(error);
-                this.setState({authenticatedUser: undefined, authenticated: false });
-            })
 
-    };
+    // onSubmitSignup = (signupData) => {
+    //     console.log("Sign up user")
+    //     axios.post("http://localhost:8080/api/user", signupData)
+    //         .then(response => {
+    //             console.log(response)
+    //             this.setState({authenticatedUser: response.data, authenticated: true});
+    //         })
+    //
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.setState({authenticatedUser: undefined, authenticated: false });
+    //         })
+    //
+    // };
 
     render(){
         return (

@@ -5,13 +5,13 @@ import {DataContext, withData} from "../../context/dataProvider";
 import {Link} from 'react-router-dom'
 import ListingPage from "../listingPage/ListingPage";
 import {connect} from 'react-redux'
-import {fetchAllListings} from "../../actions/listingActions";
+import {fetchListingById} from "../../actions/listingActions";
 
 function ItemListing(props) {
 
-
+console.log(props)
     const getListingData = (id)=>{
-        props.getListingById(id)
+        props.fetchListingById(id)
     }
     let id = props.id
     const styles = {
@@ -39,6 +39,8 @@ function ItemListing(props) {
         </React.Fragment>
     )
 }
-
+const mapStateToProps = state =>({
+    listingData: state.listingData
+})
 // export default withData(ItemListing);
-export default withData(ItemListing);
+export default connect(mapStateToProps,{fetchListingById})(ItemListing);

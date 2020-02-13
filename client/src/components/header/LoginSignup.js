@@ -1,7 +1,8 @@
 import React from 'react'
 import Axios from 'axios'
 import {withData} from "../../context/dataProvider";
-
+import {userLogin,userSignup} from "../../actions/authActions";
+import {connect} from 'react-redux'
 class LoginSignup extends React.Component {
     state = {
         signup: false,
@@ -23,7 +24,7 @@ class LoginSignup extends React.Component {
             email: this.state.email,
             password: this.state.password
         }
-        this.props.onSubmitLogin(loginData)
+        this.props.userLogin(loginData)
     }
 
     onSubmitSignup = (e) => {
@@ -36,11 +37,11 @@ class LoginSignup extends React.Component {
             zipCode: this.state.location,
             imageUrl: "https://source.unsplash.com/random/300×300"
         }
-        this.props.onSubmitSignup(signupData)
-        this.setState({
-            signup: false,
-            login: false
-        },()=>{console.log("success")})
+        this.props.userSignup(signupData)
+        // this.setState({
+        //     signup: false,
+        //     login: false
+        // },()=>{console.log("success")})
     }
 
     render() {
@@ -125,5 +126,8 @@ class LoginSignup extends React.Component {
         )
     }
 }
-
-export default withData(LoginSignup);
+const mapStateToProps = state => ({
+    auth: state.auth,
+    listingData: state.listingData
+})
+export default connect(mapStateToProps,{userLogin,userSignup})(LoginSignup);

@@ -16,20 +16,18 @@ export const fetchAllListings = () => dispatch => {
             console.log(err)
         })
 }
-export const fetchUserById = (id) => dispatch => {
-    console.log("fetching user by id")
+export const postListing = (listingData) => dispatch => {
+    console.log("create listing")
 
-    //
-    // console.log("getuserbyid has been called")
-    // axios.get(`http://localhost:8080/api/user/${id} `)
-    //     .then(response => dispatch({
-    //         type: FETCH_USER_BY_ID,
-    //         payload: response.data
-    //     }))
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
 
+    axios.post("http://localhost:8080/api/listing", listingData)
+        .then(response=>dispatch({
+            type: CREATE_LISTING,
+            payload: response.data
+        })).catch(err=>{
+            console.log(listingData)
+            console.log(err)
+    })
 }
 export const fetchListingById = (id) => dispatch => {
     console.log("fetching listing by id")
@@ -40,11 +38,18 @@ export const fetchListingById = (id) => dispatch => {
                 type: FETCH_LISTING_BY_ID,
                 payload: response.data
             })
-            // .then(fetchUserById(response.data.user))
-            .catch(err => {
-                console.log(err)
+            )
+        .then(response=>{
+            axios.get(`http://localhost:8080/api/user/${response.payload.user} `)
+                .then(user => dispatch({
+                    type: FETCH_USER_BY_ID,
+                    payload: user.data
+                })).then(response=>{
+                console.log(response)
             })
-
-)
+                .catch(err => {
+                    console.log(err)
+                })
+        })
 
 }
