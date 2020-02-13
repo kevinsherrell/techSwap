@@ -106,6 +106,19 @@
   &__wanted {
   }
 
+  &__delete{
+    border-radius: 10px;
+    background-color: #687F9E;
+    color: white;
+    width: 200px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 10px;
+    &:hover{
+      cursor: grab;
+    }
+  }
+
   &__contact-section {
     margin-top: 20px;
     border-top: 1px solid rgba(0, 0, 0, .08);
@@ -149,7 +162,7 @@
 
   &__listings-by-user-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
   }
 
@@ -159,7 +172,7 @@
 
   &__listings-near-you-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
   }
 }

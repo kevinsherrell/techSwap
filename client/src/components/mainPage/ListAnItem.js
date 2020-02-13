@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function ListAnItem() {
+function ListAnItem(props) {
     const [mobile, setMobile] = useState(false)
     const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
     const mobileToggle = (e)=>{
@@ -24,7 +24,7 @@ function ListAnItem() {
     console.log(window.innerWidth)
     return (
         <section className="list-an-item">
-            <div className="container" onClick={mobileToggle}>
+            <div className="container" onClick={props.togglePostItem}>
                 {browserWidth < 650  && (
                     <a className={'list-an-item__link'} href={""}>List an item!</a>
                 )}

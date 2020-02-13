@@ -1,7 +1,9 @@
 import React from 'react'
+import Axios from 'axios'
+import {withData} from "../../context/dataProvider";
 
-class LoginSignup extends React.Component{
-    state ={
+class LoginSignup extends React.Component {
+    state = {
         signup: false,
         login: true,
         firstName: "",
@@ -9,71 +11,113 @@ class LoginSignup extends React.Component{
         email: "",
         location: "",
         password: "",
-        passwordConfirmation: ""
+        passwordConfirmation: "",
+        zipCode: ""
     };
-    onChange=(e)=>{
-      this.setState({[e.target.name]: e.target.value})
+    onChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     };
-    onSubmitLogin = (e)=>{
 
-    };
-    onSubmitSignup = (e)=>{
+    onSubmitLogin = (e) => {
+        let loginData = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        this.props.onSubmitLogin(loginData)
+    }
 
-    };
+    onSubmitSignup = (e) => {
+        let signupData = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            passwordConfirmation: this.state.passwordConfirmation,
+            zipCode: this.state.location,
+            imageUrl: "https://source.unsplash.com/random/300×300"
+        }
+        this.props.onSubmitSignup(signupData)
+        this.setState({
+            signup: false,
+            login: false
+        },()=>{console.log("success")})
+    }
+
     render() {
         console.log(this.state);
         return (
+
             <div className="login-signup">
                 <div className="container">
-                    <i className="material-icons login-signup__close-icon" >close</i>
+                    <i className="material-icons login-signup__close-icon"
+                       onClick={this.props.toggleLoginSignup}>close</i>
                     <h3 className="login-signup__logo">trad'r</h3>
-                    <h4 className="login-signup__sub-header">Trade #1 online bartering platform</h4>
+                    <h4 className="login-signup__sub-header">The #1 online bartering platform</h4>
 
-                    {this.state.signup && (
-                        <form action="" className="login-signup__signup-form">
+                    {this.props.signup && (
+                        <div className="login-signup__signup-form">
                             <div className="signup-form__row-1">
                                 <div className="signup-form__first-name">
-                                    <input type="text" name={'firstName'} className="signup-form__first-name-input" value={this.state.firstName} onChange={this.onChange} placeholder={"First Name"}/>
+                                    <input type="text" name={'firstName'} className="signup-form__first-name-input"
+                                           value={this.state.firstName} onChange={this.onChange}
+                                           placeholder={"First Name"} disable={!this.props.signup && "disable"}/>
                                 </div>
                                 <div className="signup-form__last-name">
-                                    <input type="text" name={'lastName'} className="signup-form__last-name-input" value={this.state.lastName} onChange={this.onChange} placeholder={"Last Name"}/>
+                                    <input type="text" name={'lastName'} className="signup-form__last-name-input"
+                                           value={this.state.lastName} onChange={this.onChange}
+                                           placeholder={"Last Name"}/>
                                 </div>
                             </div>
                             <div className="signup-form__row-2">
                                 <div className="signup-form__email">
-                                    <input type="text" name={'email'} className="signup-form__email-input" value={this.state.email} onChange={this.onChange} placeholder={"Email"}/>
+                                    <input type="text" name={'email'} className="signup-form__email-input"
+                                           value={this.state.email} onChange={this.onChange} placeholder={"Email"}/>
                                 </div>
                                 <div className="signup-form__password">
-                                    <input type="text" name={'password'} className="signup-form__password-input" value={this.state.password} onChange={this.onChange} placeholder={"Password"}/>
+                                    <input type="password" name={'password'} className="signup-form__password-input"
+                                           value={this.state.password} onChange={this.onChange}
+                                           placeholder={"Password"}/>
 
                                 </div>
                                 <div className="signup-form__password-confirmation">
-                                    <input type="text" name={'passwordConfirmation'} className="signup-form__password-confirmation-input" value={this.state.passwordConfirmation} onChange={this.onChange} placeholder={"Confirm Password"}/>
+                                    <input type="password" name={'passwordConfirmation'}
+                                           className="signup-form__password-confirmation-input"
+                                           value={this.state.passwordConfirmation} onChange={this.onChange}
+                                           placeholder={"Confirm Password"}/>
                                 </div>
                             </div>
                             <div className="signup-form__row-3">
                                 <div className="signup-form__location">
-                                    <input type="text" name={'location'} maxLength={"5"} className="signup-form__location-input" value={this.state.location} onChange={this.onChange} placeholder={"Location (Zip Code)"}/>
+                                    <input type="text" name={'location'} maxLength={"5"}
+                                           className="signup-form__location-input" value={this.state.location}
+                                           onChange={this.onChange} placeholder={"Location (Zip Code)"}/>
                                 </div>
                             </div>
-                            <p className={"signup-form__submit"}>Sign up</p>
-                        </form>
+                            <p className={"signup-form__submit"} onClick={(e) => this.onSubmitSignup(e)}>Sign up</p>
+                            <p className="signup-form__login-option" onClick={this.props.authMenuToggle}>Already a member? <span className={"signup-form__login-option-link"} >Log in here!</span></p>
+                        </div>
                     )}
 
 
                     {/*LOGIN FORM*/}
-                    {this.state.login && (
-                        <form action="" className="login-signup__login-form">
+                    {this.props.login && (
+                        <div className="login-signup__login-form">
                             <div className="login-form">
                                 <div className="login-form__email">
-                                    <input type="text" name={'email'} className="signup-form__email-input" value={this.state.email} disabled={this.state.signup && "disabled"} onChange={this.onChange} placeholder={"Email"}/>
+                                    <input type="text" name={'email'} className="signup-form__email-input"
+                                           value={this.state.email} disabled={this.props.signup && "disabled"}
+                                           onChange={this.onChange} placeholder={"Email"}/>
                                 </div>
                                 <div className="login-form__password">
-                                    <input type="text" name={'password'} className="login-form__password-input" value={this.state.password} disabled={this.state.signup && "disabled"} onChange={this.onChange} placeholder={"Password"}/>
+                                    <input type="password" name={'password'} className="login-form__password-input"
+                                           value={this.state.password} disabled={this.props.signup && "disabled"}
+                                           onChange={this.onChange} placeholder={"Password"}/>
                                 </div>
                             </div>
-                            <p className={"login-form__submit"}> Log In</p>
-                        </form>
+
+                            <p className={"login-form__submit"} onClick={(e) => this.onSubmitLogin(e)}> Log In</p>
+                            <p className="login-form__signup-option" onClick={this.props.authMenuToggle}>Not a member? <span className={"login-form__signup-option-link"} >Sign up here!</span></p>
+                        </div>
                     )}
 
                 </div>
@@ -81,4 +125,5 @@ class LoginSignup extends React.Component{
         )
     }
 }
-export default LoginSignup;
+
+export default withData(LoginSignup);

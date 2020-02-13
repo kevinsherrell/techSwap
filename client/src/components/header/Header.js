@@ -10,15 +10,18 @@ import location from "../../assets/images/location.png"
 import close from "../../assets/images/close.png"
 import avatar from '../../assets/images/cloudStrife.png'
 import LoginSignup from "./LoginSignup";
+import {withData} from "../../context/dataProvider";
 
 class Header extends React.Component {
     state = {
         browserWidth: window.innerWidth,
         searchToggle: false,
+        authenticated: false,
         searchMenuFilter: false,
         navMenuToggle: false,
-        authenticated: false,
-        loginSignup: true,
+        loginSignup: false,
+        login: false,
+        signup: false
     }
 
     componentDidMount() {
@@ -27,7 +30,7 @@ class Header extends React.Component {
             this.setState({
                 browserWidth: window.innerWidth
             })
-            console.log(this.state.browserWidth)
+            // console.log(this.state.browserWidth)
         })
     }
 
@@ -47,21 +50,66 @@ class Header extends React.Component {
             navMenuToggle: !this.state.navMenuToggle
         })
     }
+    toggleLoginSignup = () => {
+        this.setState({
+            loginSignup: !this.state.loginSignup,
+            login: false,
+            signup: false
+        })
+        // console.log("working")
+    }
+    toggleLogin = () => {
+        this.setState({
+            loginSignup: !this.state.loginSignup && !this.state.loginSignup,
+            login: !this.state.login
+        })
+        // console.log("working")
+    }
+    toggleSignup = () => {
+        this.setState({
+            loginSignup: !this.state.loginSignup && !this.state.loginSignup,
+            signup: !this.state.signup
+        })
+
+    }
+    authMenuToggle = () => {
+        this.setState({
+            login: !this.state.login,
+            signup: !this.state.signup
+        })
+        console.log(this.state.login, this.state.signup)
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.authenticated != this.props.authenticated) {
+            this.setState({authenticated: this.props.authenticated})
+        }
+    }
 
     render() {
-        console.log("Browser Width: " + this.state.browserWidth)
+        // console.log("Browser Width: " + this.state.browserWidth)
 
         return (
             <header className={"header"}>
-                {/*<HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
-                {/*<SearchMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
-                {/*<NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter} toggleNavMenu={this.toggleNavMenu}{...this.state}/>*/}
-                <LoginSignup/>
+                <HeaderNav toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter}
+                           toggleNavMenu={this.toggleNavMenu} toggleLogin={this.toggleLogin}
+                           toggleSignup={this.toggleSignup} toggleLoginSignup={this.toggleLoginSignup}{...this.state}/>
+                <SearchMenu toggleSearchMenu={this.toggleSearchMenu}
+                            toggleSearchMenuFilter={this.toggleSearchMenuFilter}
+                            toggleNavMenu={this.toggleNavMenu}{...this.state}/>
+                <NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter}
+                         toggleNavMenu={this.toggleNavMenu}{...this.state} />
+                {this.state.loginSignup && (
+                    <LoginSignup authMenuToggle={this.authMenuToggle} toggleLogin={this.toggleLogin}
+                                 toggleSignup={this.toggleSignup}
+                                 toggleLoginSignup={this.toggleLoginSignup}{...this.state} {...this.props}/>
+
+                )}
             </header>
         )
     }
 }
 
-export default Header;
+export default withData(Header);
 
 //todo - Create an advanced search for desktops. When search is clicked menu appears under the search bar automatically

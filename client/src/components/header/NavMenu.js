@@ -2,6 +2,7 @@ import React from 'react';
 import avatar from "../../assets/images/cloudStrife.png";
 
 function NavMenu(props) {
+    // console.log("Menu props ::> ", props)
     return (
             <>
 

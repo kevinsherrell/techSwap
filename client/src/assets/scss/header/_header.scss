@@ -280,8 +280,7 @@
       justify-content: space-around;
       width: 100%;
     }
-
-    &__logged-out-item {
+    &__logged-out-signup{
       display: flex;
       padding: 5px;
 
@@ -292,12 +291,42 @@
       &:hover {
         color: white;
         background-color: #687F9E;
-      }
-
-      &:last-child {
-        padding-left: 10px;
+        cursor: grab;
       }
     }
+    &__logged-out-login{
+
+        display: flex;
+        padding: 5px;
+
+        border: 1px solid #687F9E;
+        border-radius: 5px;
+        color: #687F9E;
+        margin-left: 10px;
+        &:hover {
+          color: white;
+          background-color: #687F9E;
+          cursor: grab;
+        }
+      }
+
+    //&__logged-out-item {
+    //  display: flex;
+    //  padding: 5px;
+    //
+    //  border: 1px solid #687F9E;
+    //  border-radius: 5px;
+    //  color: #687F9E;
+    //
+    //  &:hover {
+    //    color: white;
+    //    background-color: #687F9E;
+    //  }
+    //
+    //  &:last-child {
+    //    padding-left: 10px;
+    //  }
+    //}
 
     &__logged-out-icon {
       margin-right: 5px;

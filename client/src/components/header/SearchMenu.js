@@ -3,7 +3,7 @@ import search from "../../assets/images/search.png";
 import location from "../../assets/images/location.png";
 
 function SearchMenu(props) {
-    console.log(props)
+    // console.log(props)
     return (
         <div className={`header__search-menu ${props.searchToggle === false && "hidden"}`}>
             <div className="header__search-menu-inner-container container">

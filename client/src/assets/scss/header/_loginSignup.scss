@@ -1,8 +1,14 @@
-.login-signup {
-  height: 100vh;
-  padding-top: 15%;
-  .container{
+@import "../queryMixins";
 
+.login-signup {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  .container{
+    padding-top: 15%;
+    position: relative;
   }
   &__close-icon{
     position: absolute;
@@ -11,6 +17,7 @@
     color: #687F9E;
   }
   &__logo {
+    margin-top: 30px;
     text-align: center;
     font-size: 32px;
     color: #687F9E;
@@ -141,6 +148,15 @@
       cursor: grab;
     }
   }
+  &__login-option{
+    text-align: center;
+  }
+  &__login-option-link{
+    color: red;
+    &:hover{
+      cursor: grab;
+    }
+  }
 }
 .login-signup__login-form{
   margin-top: 20px;
@@ -178,4 +194,31 @@
       cursor: grab;
     }
   }
+  &__signup-option{
+    text-align: center;
+  }
+  &__signup-option-link{
+    color: red;
+    &:hover{
+      cursor: grab;
+    }
+  }
+
+}
+@include responsive($tablet-landscape){
+
+.login-signup{
+  border: 1px solid #687F9E;
+  top: 20px;
+  left: 25%;
+  width: 50%;
+  height: 500px;
+  border-radius: 10px;
+  .container{
+    //width: 30%;
+  }
+  &__logo{
+    margin-top: 0;
+  }
+}
 }

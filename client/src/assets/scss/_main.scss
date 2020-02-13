@@ -138,7 +138,7 @@
 
   &__listings {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
   }
 
@@ -191,6 +191,7 @@
 
 .list-an-item {
   position: sticky;
+  bottom: 0;
   background-color: white;
   bottom: 0;
   margin: 0 auto;
@@ -224,7 +225,17 @@
     width: 18%;
     min-height: 50%;
 
-
+  &__listAnItem{
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: white;
+    background-color: #687F9E;
+    &:hover{
+      cursor: grab;
+    }
+  }
     &__update-form {
       flex-direction: column;
     }
@@ -258,7 +269,10 @@
       background-color: #687F9E;
       color: white;
       border: none;
-      border-radius: 15px;
+      border-radius: 10px;
+      &:hover{
+        cursor: grab;
+      }
     }
   }
   .content {
@@ -267,7 +281,7 @@
     width: 80%;
 
     &__listings {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       grid-gap: 10px;
     }
   }
