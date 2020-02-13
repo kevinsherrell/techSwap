@@ -4,6 +4,9 @@ import image from '../../assets/images/listing-pic.jpg'
 import {DataContext, withData} from "../../context/dataProvider";
 import {Link} from 'react-router-dom'
 import ListingPage from "../listingPage/ListingPage";
+import {connect} from 'react-redux'
+import {fetchAllListings} from "../../actions/listingActions";
+
 function ItemListing(props) {
 
 

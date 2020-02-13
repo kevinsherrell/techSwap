@@ -1,5 +1,9 @@
 import React, {useContext, useEffect} from 'react';
 import {useState} from 'react'
+
+import {connect} from 'react-redux'
+import {fetchAllListings} from "../../actions/listingActions";
+
 import uuid from 'uuid'
 import ListAnItem from "./ListAnItem";
 import ItemListing from "./ItemListing";
@@ -16,22 +20,23 @@ class Main extends React.Component {
         catMenuOpened: false,
         postItemForm: false,
         browserWidth: window.innerWidth,
-        // ...this.props
-        listings: this.props.listings
     }
     handleCatMenu = () => {
         this.setState({
             catMenuOpened: !this.state.catMenuOpened
         }, () => console.log("cat menu has been opened"))
     }
-    togglePostItem=(e)=>{
+    togglePostItem = (e) => {
         e.preventDefault();
         this.setState({
             postItemForm: !this.state.postItemForm
         })
     }
+
     componentDidMount() {
-        this.props.getAllListings()
+        // this.props.getAllListings()
+
+        this.props.fetchAllListings()
         window.addEventListener('resize', () => {
             this.setState({
                 browserWidth: window.innerWidth
@@ -41,26 +46,29 @@ class Main extends React.Component {
         //     console.log("the listing data has changed")
         // }
     }
-    componentDidUpdate(prevProps, prevState){
-        console.log(this.props.listings)
-        if(prevState.listings !== this.props.listings){
-            this.setState({
-                listings: this.props.listings
-            })
-        }
 
-    }
-    static getDerivedStateFromProps=(props, state)=>{
-                if(props.listings !== state.listings){
-                    return {
-                        listings: props.listings
-                    }
-                }
-                return null;
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(this.props.listings)
+    //     if (prevState.listings !== this.props.listings) {
+    //         this.setState({
+    //             listings: this.props.listings
+    //         })
+    //     }
+    //
+    // }
+
+    // static getDerivedStateFromProps = (props, state) => {
+    //     if (props.listings !== state.listings) {
+    //         return {
+    //             listings: props.listings
+    //         }
+    //     }
+    //     return null;
+    // }
+
     render() {
         console.log("rendered")
-        const listings = this.props.listings
+        const listings = this.props.listingData.listings
         console.log(listings);
         const {browserWidth} = this.state.browserWidth
         return (
@@ -159,7 +167,7 @@ class Main extends React.Component {
                                 you</p>
                         </section>
                         <section className="content__listings">
-                            {this.state.listings.map(listing => {
+                            {listings.map(listing => {
                                 return (
                                     <ItemListing key={uuid()} {...listing}/>
                                 )
@@ -179,11 +187,13 @@ class Main extends React.Component {
             </div>
         )
     }
-
-
 }
 
-export default withData(Main);
+const mapStateToProps = state =>({
+    listingData: state.listingData
+})
+
+export default connect(mapStateToProps,{fetchAllListings})(Main);
 // export default (Main);
 
 
