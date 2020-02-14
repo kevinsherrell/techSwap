@@ -24,6 +24,7 @@ class LoginSignup extends React.Component {
             password: this.state.password
         }
         this.props.onSubmitLogin(loginData)
+        this.props.toggleLoginSignup()
     }
 
     onSubmitSignup = (e) => {
@@ -41,6 +42,7 @@ class LoginSignup extends React.Component {
             signup: false,
             login: false
         },()=>{console.log("success")})
+        this.props.toggleLoginSignup()
     }
 
     render() {

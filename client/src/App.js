@@ -19,7 +19,6 @@ function App() {
                 <Header/>
                 <Route exact path={"/"} component={Main}/>
                 <Route exact path={`/listing/:id`} component={ListingPage}/>
-
             </div>
         </DataProvider>
 

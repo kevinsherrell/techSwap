@@ -43,6 +43,7 @@ class PostItem extends Component {
             }).catch(err=>{
                 console.log(err)
         })
+        this.props.togglePostItem(e)
     }
     render() {
         console.log(this.props)

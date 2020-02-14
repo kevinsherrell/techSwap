@@ -98,7 +98,7 @@ class ListingPage extends React.Component {
                                  src={`${this.props.listingPageData.imageUrl && this.props.listingPageData.imageUrl}`}
                                  alt=""/>
                             <p className={'listing-page__price-btn'}>{this.props.listingPageData.price < 1 ? "Trade Only": `Trade + $${this.props.listingPageData.price}`}</p>
-                            <p className={'listing-page__photo-btn'}>View photos (5)</p>
+                            <p className={'listing-page__photo-btn'}>View photos</p>
 
                         </section>
                         <section className="listing-page__info-section">
