@@ -10,6 +10,8 @@ import image from '../../assets/images/listing-pic.jpg'
 import cloud from '../../assets/images/cloudStrife.png'
 import g7 from '../../assets/images/g7.jpg'
 import map from '../../assets/images/storelocator_clothing.png'
+import {deleteListing} from "../../actions/listingActions";
+
 // import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class ListingPage extends React.Component {
@@ -64,18 +66,19 @@ class ListingPage extends React.Component {
     // }
 
 
-    // deletePost = (id) => {
-    //     id = this.props.listingPageData.id
-    //     if (this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user) {
-    //         axios.delete(`http://localhost:8080/api/listing/${id}`)
-    //             .then(response => {
-    //                 console.log(response)
-    //                 this.props.history.push("/")
-    //             }).catch(err => {
-    //             console.log(err)
-    //         })
-    //     }
-    // }
+    deleteListing = (id, history) => {
+        id = this.props.listingData.listingPage.id
+        history = this.props.history
+        if (this.props.auth.authenticatedUser && this.props.auth.authenticatedUser.id === this.props.listingData.listingPage.user) {
+            this.props.deleteListing(id,history)
+        }
+
+    }
+
+    // id = this.props.listingPageData.id
+
+    // this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user
+    // this.props.history.push("/")
 
     componentDidMount() {
         // console.log(this.props.user)
@@ -83,12 +86,13 @@ class ListingPage extends React.Component {
 
     componentDidUpdate() {
         // console.log(this.props.user)
+
     }
 
     render() {
 
         const {listings,listingPage,listingPageUser} = this.props.listingData
-        console.log(listings,listingPage,listingPageUser)
+        const {authenticatedUser} = this.props.auth
         return (
             <div className="listing-page">
 
@@ -125,10 +129,10 @@ class ListingPage extends React.Component {
                             <h4 className={'listing-page__wanted-header'}>Will trade for:</h4>
                             <p className={'listing-page__wanted'}>{listingPage.itemsWanted}</p>
 
-                            {/*{ this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user ? (*/}
-                            {/*    <p className="listing-page__delete" onClick={this.deletePost}>Delete This Post</p>*/}
+                            { authenticatedUser && authenticatedUser.id === listingPage.user ? (
+                                <p className="listing-page__delete" onClick={this.deleteListing}>Delete This Post</p>
 
-                            {/*):null}*/}
+                            ):null}
                         </section>
                     </div>
                     <div className="listing-page__contact-section">
@@ -165,7 +169,8 @@ class ListingPage extends React.Component {
     }
 }
 const mapStateToProps = state =>({
+    auth: state.auth,
     listingData: state.listingData
 })
-export default connect(mapStateToProps)(ListingPage);
+export default connect(mapStateToProps,{deleteListing})(ListingPage);
 // export default ListingPage;

@@ -1,9 +1,10 @@
-import {FETCH_ALL_LISTINGS, FETCH_LISTING_BY_ID, CREATE_LISTING, FETCH_USER_BY_ID} from "../actions/types";
+import {FETCH_ALL_LISTINGS, FETCH_LISTING_BY_ID, CREATE_LISTING, FETCH_USER_BY_ID,DELETE_LISTING,DELETE_LISTING_ERROR} from "../actions/types";
 
 const initialState={
     listings: [],
     listingPage: {},
     listingPageUser: {},
+    listingError: {},
     successMessage: ""
 }
 
@@ -35,6 +36,18 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 successMessage: "successful"
+            }
+        case DELETE_LISTING:
+            console.log("DELETE_LISTING")
+            return{
+                ...state
+            }
+        case DELETE_LISTING_ERROR:
+            console.log("DELETE_LISTING_ERROR")
+            return{
+                ...state,
+                listingError: action.payload,
+                successMessage: "listing Deleted"
             }
         default:
             return state;

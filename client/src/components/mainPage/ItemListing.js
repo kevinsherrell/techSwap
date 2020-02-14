@@ -1,9 +1,5 @@
-import React, {useContext} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import image from '../../assets/images/listing-pic.jpg'
-import {DataContext, withData} from "../../context/dataProvider";
+import React from 'react';
 import {Link} from 'react-router-dom'
-import ListingPage from "../listingPage/ListingPage";
 import {connect} from 'react-redux'
 import {fetchListingById} from "../../actions/listingActions";
 
@@ -17,7 +13,6 @@ console.log(props)
     const styles = {
         backgroundImage: `url(${props.imageUrl})`,
     }
-    // console.log(props)
     return (
         <React.Fragment>
             <Link to={`/listing/${props.id}`} onClick={()=>getListingData(id)} >
@@ -42,5 +37,4 @@ console.log(props)
 const mapStateToProps = state =>({
     listingData: state.listingData
 })
-// export default withData(ItemListing);
 export default connect(mapStateToProps,{fetchListingById})(ItemListing);

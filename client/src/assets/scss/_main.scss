@@ -28,7 +28,7 @@
   }
 
   &__category-list-link {
-    &:hover{
+    &:hover {
       text-decoration: underline;
       opacity: .6;
     }
@@ -150,7 +150,7 @@
   border-radius: 10px;
   flex-direction: column;
   min-height: 250px;
-  width: 100%;
+  min-width: 300px;
   overflow: hidden;
   border: 1px solid #687F9E;
 
@@ -225,17 +225,19 @@
     width: 18%;
     min-height: 50%;
 
-  &__listAnItem{
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    color: white;
-    background-color: #687F9E;
-    &:hover{
-      cursor: grab;
+    &__listAnItem {
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      color: white;
+      background-color: #687F9E;
+
+      &:hover {
+        cursor: grab;
+      }
     }
-  }
+
     &__update-form {
       flex-direction: column;
     }
@@ -270,7 +272,8 @@
       color: white;
       border: none;
       border-radius: 10px;
-      &:hover{
+
+      &:hover {
         cursor: grab;
       }
     }
@@ -285,7 +288,9 @@
       grid-gap: 10px;
     }
   }
-
+  .list-an-item {
+    display: none;
+  }
 }
 
 @include responsive($xl-desktop) {

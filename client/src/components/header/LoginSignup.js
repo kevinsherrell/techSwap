@@ -38,10 +38,6 @@ class LoginSignup extends React.Component {
             imageUrl: "https://source.unsplash.com/random/300×300"
         }
         this.props.userSignup(signupData)
-        // this.setState({
-        //     signup: false,
-        //     login: false
-        // },()=>{console.log("success")})
     }
 
     render() {

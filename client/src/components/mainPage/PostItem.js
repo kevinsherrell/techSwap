@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-import {withData} from "../../context/dataProvider";
-import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {postListing} from "../../actions/listingActions";
 

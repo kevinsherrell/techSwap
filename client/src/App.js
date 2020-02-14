@@ -11,21 +11,13 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 function App() {
-    const {listingPageData, getListingById} = useContext(DataContext)
-    // console.log(listingPageData)
-    // console.log(!listingPageData && "listing page data does not exist")
-    // console.log(listingPageData && "listing page data is available")
-
     return (
         <Provider store={store}>
-            {/*<DataProvider>*/}
                 <div className="App">
                     <Header/>
                     <Route exact path={"/"} component={Main}/>
                     <Route exact path={`/listing/:id`} component={ListingPage}/>
-
                 </div>
-            {/*</DataProvider>*/}
         </Provider>
 
 
