@@ -19,8 +19,6 @@ function App() {
                     <Route exact path={`/listing/:id`} component={ListingPage}/>
                 </div>
         </Provider>
-
-
     );
 }
 

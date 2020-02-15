@@ -36,7 +36,10 @@ class PostItem extends Component {
             imageUrl: this.state.imageUrl,
             description: this.state.description
         }
+
         this.props.postListing(listingData)
+
+
     }
 
     render() {
