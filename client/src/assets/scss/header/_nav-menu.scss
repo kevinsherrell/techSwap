@@ -56,6 +56,9 @@
   &__nav-menu-user-log-out {
     font-size: 12px;
     margin-left: 5px;
+    &:hover{
+      cursor: grab;
+    }
   }
 
   &__nav-menu-user-option-list {

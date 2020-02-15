@@ -9,9 +9,7 @@ import App from './App';
 
 ReactDOM.render(
     <Router>
-        <DataProvider>
             <App/>
-        </DataProvider>
     </Router>
     ,
     document.getElementById('root'));

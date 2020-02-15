@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {useState, useContext} from 'react'
 import ListAnItem from "../mainPage/ListAnItem";
 import ItemListing from "../mainPage/ItemListing";
@@ -9,6 +10,9 @@ import image from '../../assets/images/listing-pic.jpg'
 import cloud from '../../assets/images/cloudStrife.png'
 import g7 from '../../assets/images/g7.jpg'
 import map from '../../assets/images/storelocator_clothing.png'
+import {deleteListing} from "../../actions/listingActions";
+
+// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class ListingPage extends React.Component {
     constructor(props) {
@@ -51,7 +55,7 @@ class ListingPage extends React.Component {
     //         })
     // }
 
-    id = this.props.listingPageData.user
+    // id = this.props.listingPageData.user
 
     // static getDerivedStateFromProps(props,state){
     //     if(props !== state){
@@ -60,18 +64,21 @@ class ListingPage extends React.Component {
     //         }
     //     }
     // }
-    deletePost = (id) => {
-        id = this.props.listingPageData.id
-        if (this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user) {
-            axios.delete(`http://localhost:8080/api/listing/${id}`)
-                .then(response => {
-                    console.log(response)
-                    this.props.history.push("/")
-                }).catch(err => {
-                console.log(err)
-            })
+
+
+    deleteListing = (id, history) => {
+        id = this.props.listingData.listingPage.id
+        history = this.props.history
+        if (this.props.auth.authenticatedUser && this.props.auth.authenticatedUser.id === this.props.listingData.listingPage.user) {
+            this.props.deleteListing(id,history)
         }
+
     }
+
+    // id = this.props.listingPageData.id
+
+    // this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user
+    // this.props.history.push("/")
 
     componentDidMount() {
         // console.log(this.props.user)
@@ -79,13 +86,13 @@ class ListingPage extends React.Component {
 
     componentDidUpdate() {
         // console.log(this.props.user)
+
     }
 
     render() {
 
-        const {category, data_created, description, itemsWanted, location, price, title, tradeOnly} = this.props.listingPageData
-        console.log(this.props)
-        const {user} = this.props.user
+        const {listings,listingPage,listingPageUser} = this.props.listingData
+        const {authenticatedUser} = this.props.auth
         return (
             <div className="listing-page">
 
@@ -95,10 +102,12 @@ class ListingPage extends React.Component {
 
                         <section className="listing-page__listing-image-section">
                             <img className={'listing-page__listing-image'}
-                                 src={`${this.props.listingPageData.imageUrl && this.props.listingPageData.imageUrl}`}
+                                 src={`${listingPage && listingPage.imageUrl}`}
                                  alt=""/>
-                            <p className={'listing-page__price-btn'}>{this.props.listingPageData.price < 1 ? "Trade Only": `Trade + $${this.props.listingPageData.price}`}</p>
-                            <p className={'listing-page__photo-btn'}>View photos</p>
+
+                            <p className={'listing-page__price-btn'}>{listingPage.price < 1 ? "Trade Only": `Trade + $${listingPage.price}`}</p>
+                            <p className={'listing-page__photo-btn'}>View photos (5)</p>
+
 
                         </section>
                         <section className="listing-page__info-section">
@@ -106,24 +115,24 @@ class ListingPage extends React.Component {
 
                             <div className="listing-page__user-wrapper">
                                 <sub className={'listing-page__age'}>Posted 3 days ago by: </sub>
-                                <p className={'listing-page__name'}>{this.props.user && this.props.user.firstName} {this.props.user && this.props.user.lastName}</p>
+                                <p className={'listing-page__name'}>{listingPageUser && listingPageUser.firstName} {listingPageUser && listingPageUser.lastName}</p>
                                 <div className="listing-page__avatar-wrapper">
                                     <img className={'listing-page__avatar-image'}
-                                         src={this.props.user && this.props.user.imageUrl} alt=""/>
+                                         src={listingPageUser && listingPageUser.imageUrl} alt=""/>
                                 </div>
                             </div>
                             <h4 className={'listing-page__title'}></h4>
                             {/*<p>Trade + $250</p>*/}
-                            <p className={'listing-page__location'}>{location}</p>
+                            {/*<p className={'listing-page__location'}>{location}</p>*/}
                             <h4 className={'listing-page__description-header'}>Description:</h4>
                             <p className={'listing-page__description-text'}>
-                                {description}
+                                {listingPage.description}
                             </p>
                             <h4 className={'listing-page__wanted-header'}>Will trade for:</h4>
-                            <p className={'listing-page__wanted'}>{itemsWanted}</p>
+                            <p className={'listing-page__wanted'}>{listingPage.itemsWanted}</p>
 
-                            { this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user ? (
-                                <p className="listing-page__delete" onClick={this.deletePost}>Delete This Post</p>
+                            { authenticatedUser && authenticatedUser.id === listingPage.user ? (
+                                <p className="listing-page__delete" onClick={this.deleteListing}>Delete This Post</p>
 
                             ):null}
                         </section>
@@ -146,12 +155,12 @@ class ListingPage extends React.Component {
                         Strife: </h4>
 
                     <div className="listing-page__listings-by-user-wrapper container">
-                        {this.props.user.listing ? this.props.user.listing.map(listing => <ItemListing
+                        {listingPageUser.listing ? listingPageUser.listing.map(listing => <ItemListing
                             key={listing.id}{...listing}/>) : undefined}
                     </div>
                     <h4 className={'listing-page__listings-near-you-header container'}>Similar listings near you:</h4>
                     <div className="listing-page__listings-near-you-wrapper container grid">
-                        {this.props.user.listing ? this.props.user.listing.map(listing => <ItemListing
+                        {listingPageUser.listing ? listingPageUser.listing.map(listing => <ItemListing
                             key={listing.id} {...listing}/>) : undefined}
                     </div>
                 </div>
@@ -161,7 +170,9 @@ class ListingPage extends React.Component {
         )
     }
 }
-
-
-export default withData(withRouter(ListingPage));
+const mapStateToProps = state =>({
+    auth: state.auth,
+    listingData: state.listingData
+})
+export default connect(mapStateToProps,{deleteListing})(ListingPage);
 // export default ListingPage;

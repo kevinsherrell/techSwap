@@ -17,82 +17,54 @@ class DataProvider extends  React.Component{
         error: []
     }
 
-    // updateItem=(item)=>{
-    //
+
+    //  getAllListings =()=> {
+    //     console.log("get all listings")
+    //     axios.get("api/listing/all").then(response=>{
+    //         this.setState(
+    //             { listings: response.data },
+    //             () => console.log(this.state.listings)
+    //         );
+    //     }).catch(err=>{
+    //         console.log(err)
+    //     })
     // }
-     getAllListings =()=> {
-        console.log("get all listings")
-        axios.get("api/listing/all").then(response=>{
-            this.setState(
-                { listings: response.data },
-                () => console.log(this.state.listings)
-            );
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
 
-     getListingById =(id)=>{
-        console.log('get listing by id')
-        axios.get(`http://localhost:8080/api/listing/${id}`)
-            .then(response =>{
-                console.log(response.data)
+    //  getListingById =(id)=>{
+    //     console.log('get listing by id')
+    //     axios.get(`http://localhost:8080/api/listing/${id}`)
+    //         .then(response =>{
+    //             console.log(response.data)
+    //
+    //             this.setState(
+    //                 { listingPageData: response.data },
+    //                 () => console.log(this.state.listingPageData)
+    //             )
+    //             console.log("Loading user from ::> ", response.data)
+    //             this.getUserById(response.data.user)
+    //         })
+    //         .catch(err=>{
+    //             console.log(err)
+    //         })
+    // }
+    //  getUserById = (id)=>{
+    //     console.log("getuserbyid has been called")
+    //      console.log(id)
+    //     axios.get(`http://localhost:8080/api/user/${id} `)
+    //         .then(response=>{
+    //             this.setState(
+    //                 { user:response.data },
+    //                 () => console.log(this.state.user)
+    //             );
+    //         }).catch(err=>{
+    //             console.log(err)
+    //     })
+    // }
 
-                this.setState(
-                    { listingPageData: response.data },
-                    () => console.log(this.state.listingPageData)
-                )
-                console.log("Loading user from ::> ", response.data)
-                this.getUserById(response.data.user)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-    }
-     getUserById = (id)=>{
-        console.log("getuserbyid has been called")
-         console.log(id)
-        axios.get(`http://localhost:8080/api/user/${id} `)
-            .then(response=>{
-                this.setState(
-                    { user:response.data },
-                    () => console.log(this.state.user)
-                );
-            }).catch(err=>{
-                console.log(err)
-        })
-    }
+    // onLogoutUser = () => {
+    //     this.setState({authenticatedUser: undefined, authenticated: false });
+    // }
 
-    onLogoutUser = () => {
-        this.setState({authenticatedUser: undefined, authenticated: false });
-    }
-    onSubmitLogin = (loginData) => {
-        console.log("Login user")
-        axios.post("http://localhost:8080/api/user/login", loginData)
-            .then(response => {
-                console.log(response)
-                this.setState({authenticatedUser: response.data, authenticated: true});
-            })
-
-            .catch(error => {
-                console.log(error);
-                this.setState({authenticatedUser: undefined, authenticated: false });
-            })
-    };
-    onSubmitSignup = (signupData) => {
-        console.log("Sign up user")
-        axios.post("http://localhost:8080/api/user", signupData)
-            .then(response => {
-                console.log(response)
-                this.setState({authenticatedUser: response.data, authenticated: true});
-            })
-
-            .catch(error => {
-                console.log(error);
-                this.setState({authenticatedUser: undefined, authenticated: false });
-            })
-
-    };
 
     render(){
         return (

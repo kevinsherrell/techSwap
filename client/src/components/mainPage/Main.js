@@ -1,13 +1,12 @@
-import React, {useContext, useEffect} from 'react';
-import {useState} from 'react'
+import React from 'react';
+
+import {connect} from 'react-redux'
+import {fetchAllListings} from "../../actions/listingActions";
+
 import uuid from 'uuid'
 import ListAnItem from "./ListAnItem";
 import ItemListing from "./ItemListing";
-import {DataContext, withData} from "../../context/dataProvider";
-import Axios from 'axios';
 import PropTypes from 'prop-types'
-import {Route} from "react-router-dom";
-import ListingPage from "../listingPage/ListingPage";
 import PostItem from "./PostItem";
 
 
@@ -16,53 +15,41 @@ class Main extends React.Component {
         catMenuOpened: false,
         postItemForm: false,
         browserWidth: window.innerWidth,
-        // ...this.props
-        listings: this.props.listings
+        listings: this.props.listingData.listings
     }
     handleCatMenu = () => {
         this.setState({
             catMenuOpened: !this.state.catMenuOpened
         }, () => console.log("cat menu has been opened"))
     }
-    togglePostItem=(e)=>{
+    togglePostItem = (e) => {
         e.preventDefault();
         this.setState({
             postItemForm: !this.state.postItemForm
         })
     }
+
     componentDidMount() {
-        this.props.getAllListings()
+
+            this.props.fetchAllListings()
+
         window.addEventListener('resize', () => {
             this.setState({
                 browserWidth: window.innerWidth
             }, () => console.log(this.state))
         })
-        // if (this.props.getAllListings() !== this.props.listings) {
-        //     console.log("the listing data has changed")
-        // }
     }
-    componentDidUpdate(prevProps, prevState){
-        console.log(this.props.listings)
-        if(prevState.listings !== this.props.listings){
-            this.setState({
-                listings: this.props.listings
-            })
-        }
 
-    }
-    static getDerivedStateFromProps=(props, state)=>{
-                if(props.listings !== state.listings){
-                    return {
-                        listings: props.listings
-                    }
-                }
-                return null;
-    }
     render() {
         console.log("rendered")
-        const listings = this.props.listings
-        console.log(listings);
+        console.log(this.state)
+        const listings = this.props.listingData.listings
         const {browserWidth} = this.state.browserWidth
+        const mapListings = listings.map(listing => {
+                return (
+                    <ItemListing key={uuid()} {...listing}/>
+                )
+            })
         return (
             <div className="home">
                 <div className="home__inner-container container">
@@ -155,15 +142,11 @@ class Main extends React.Component {
                             </div>
 
 
-                            <p className={"content__sort-description"} onClick={this.getAllListings}>Listings near
+                            <p className={"content__sort-description"}>Listings near
                                 you</p>
                         </section>
                         <section className="content__listings">
-                            {this.state.listings.map(listing => {
-                                return (
-                                    <ItemListing key={uuid()} {...listing}/>
-                                )
-                            })}
+                            {mapListings}
                         </section>
                     </div>
 
@@ -179,11 +162,13 @@ class Main extends React.Component {
             </div>
         )
     }
-
-
 }
 
-export default withData(Main);
+const mapStateToProps = state =>({
+    listingData: state.listingData
+})
+
+export default connect(mapStateToProps,{fetchAllListings})(Main);
 // export default (Main);
 
 

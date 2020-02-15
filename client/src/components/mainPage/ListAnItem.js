@@ -1,36 +1,44 @@
 import React, {useState, useEffect} from 'react'
 
-function ListAnItem(props) {
-    const [mobile, setMobile] = useState(false)
-    const [browserWidth, setBrowserWidth] = useState(window.innerWidth)
-    const mobileToggle = (e)=>{
-        // e.preventDefault()
-        if(browserWidth < 767){
-            setMobile(!mobile)
-        }
-        console.log(mobile)
+class ListAnItem extends React.Component {
+    state={
+        mobile: false,
+        browserWidth: window.innerWidth,
     }
-    const browserWidthListener = (e)=>{
+
+
+     mobileToggle = (e)=>{
+        if(this.state.browserWidth < 767){
+            this.setState({
+                mobile: !this.state.mobile
+            })
+        }
+
+    }
+     browserWidthListener = (e)=>{
         window.addEventListener('resize', ()=>{
-            setBrowserWidth(window.innerWidth)
-            console.log(browserWidth)
+            this.setState({
+                browserWidth: window.innerWidth
+            })
         })
     }
+    componentDidMount() {
+        this.browserWidthListener()
+    }
 
-    useEffect(()=>{
-        browserWidthListener()
 
-    })
-    console.log(window.innerWidth)
-    return (
-        <section className="list-an-item">
-            <div className="container" onClick={props.togglePostItem}>
-                {browserWidth < 650  && (
-                    <a className={'list-an-item__link'} href={""}>List an item!</a>
-                )}
-            </div>
-        </section>
-    )
+    render(){
+        return (
+            <section className="list-an-item">
+                <div className="container" onClick={this.props.togglePostItem}>
+                    {this.state.browserWidth < 650  && (
+                        <a className={'list-an-item__link'} href={""}>List an item!</a>
+                    )}
+                </div>
+            </section>
+        )
+    }
+
 }
 
 export default ListAnItem;

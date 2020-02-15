@@ -435,6 +435,8 @@
 .header__nav-menu-user-log-out {
   font-size: 12px;
   margin-left: 5px; }
+  .header__nav-menu-user-log-out:hover {
+    cursor: grab; }
 
 .header__nav-menu-user-option-list {
   display: flex;
@@ -752,7 +754,7 @@
   border-radius: 10px;
   flex-direction: column;
   min-height: 250px;
-  width: 100%;
+  min-width: 300px;
   overflow: hidden;
   border: 1px solid #687F9E; }
   .item-listing__image {
@@ -849,7 +851,9 @@
     width: 80%; }
     .content__listings {
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-gap: 10px; } }
+      grid-gap: 10px; }
+  .list-an-item {
+    display: none; } }
 
 @media only screen and (min-width: 1440px) {
   .sidebar {

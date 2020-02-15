@@ -1,8 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import {userLogin,userLogout} from "../../actions/authActions";
 import avatar from "../../assets/images/cloudStrife.png";
 
 function NavMenu(props) {
-    // console.log("Menu props ::> ", props)
+
+    const {authenticated, authenticatedUser} = props.auth
+
     return (
             <>
 
@@ -11,15 +15,15 @@ function NavMenu(props) {
                 {/*todo - only display if the user is logged in*/}
                 <div className="header__nav-menu-user">
                     <div className="header__nav-menu-user-avatar-wrapper">
-                        <img className={'header__nav-menu-user-avatar-image'} src={avatar} alt=""/>
+                        <img className={'header__nav-menu-user-avatar-image'} src={ authenticatedUser && authenticatedUser.imageUrl} alt=""/>
                     </div>
                     <p className={'header__nav-menu-user-greeting'}>
-                        {props.authenticated ? 'Hi Cloud!' : 'Not Logged In'}
-                        {props.authenticated && (
-                            <span className={'header__nav-menu-user-log-out'}>(Log out)</span>
+                        {authenticated ?`Hi ${authenticatedUser.firstName}!` : 'Not Logged In'}
+                        {authenticated && (
+                            <span className={'header__nav-menu-user-log-out'} onClick={props.userLogout}>(Log out)</span>
                         )}
                     </p>
-                    {props.authenticated && (
+                    {authenticated && (
                         <ul className={"header__nav-menu-user-option-list"}>
                             <li className={'header__nav-menu-user-option-item'}><i className="header__nav-menu-user-icon material-icons">notifications</i>Notifications</li>
                             <li className={'header__nav-menu-user-option-item'}><i className="header__nav-menu-user-icon material-icons">chat</i>Messages</li>
@@ -31,9 +35,9 @@ function NavMenu(props) {
                 {/**/}
 
                 <ul className={'header__nav-menu-link-list'}>
-                    <li className={`header__nav-menu-link-item ${props.authenticated && 'header__nav-menu-link-item--authenticated'}`}>Sign up</li>
-                    {!props.authenticated && (
-                        <li className={'header__nav-menu-link-item'}>Log in</li>
+                    <li className={`header__nav-menu-link-item ${authenticated && 'header__nav-menu-link-item--authenticated'}`} onClick={props.toggleSignup}>Sign up</li>
+                    {!authenticated && (
+                        <li className={'header__nav-menu-link-item'} onClick={props.toggleLogin}>Log in</li>
                     )}
 
                     <li className={"header__nav-menu-category-header"}>Categories</li>
@@ -55,4 +59,10 @@ function NavMenu(props) {
 
     )
 }
-export default NavMenu;
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    listingData: state.listingData
+})
+
+export default connect(mapStateToProps,{userLogout,userLogin})(NavMenu);

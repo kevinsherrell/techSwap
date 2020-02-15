@@ -34,6 +34,13 @@ class Header extends React.Component {
         })
     }
 
+    // componentWillUnmount() {
+    //     window.removeEventListener('resize',()=>{
+    //         console.log("listener removed")
+    //     })
+    // }
+
+
     toggleSearchMenu = () => {
         this.setState({
             searchToggle: !this.state.searchToggle,
@@ -98,13 +105,14 @@ class Header extends React.Component {
                             toggleSearchMenuFilter={this.toggleSearchMenuFilter}
                             toggleNavMenu={this.toggleNavMenu}{...this.state}/>
                 <NavMenu toggleSearchMenu={this.toggleSearchMenu} toggleSearchMenuFilter={this.toggleSearchMenuFilter}
-                         toggleNavMenu={this.toggleNavMenu}{...this.state} />
+                         toggleNavMenu={this.toggleNavMenu} toggleSignup={this.toggleLogin}{...this.state} />
                 {this.state.loginSignup && (
                     <LoginSignup authMenuToggle={this.authMenuToggle} toggleLogin={this.toggleLogin}
                                  toggleSignup={this.toggleSignup}
                                  toggleLoginSignup={this.toggleLoginSignup}{...this.state} {...this.props}/>
 
                 )}
+
             </header>
         )
     }
