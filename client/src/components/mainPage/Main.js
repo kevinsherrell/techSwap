@@ -15,6 +15,7 @@ class Main extends React.Component {
         catMenuOpened: false,
         postItemForm: false,
         browserWidth: window.innerWidth,
+        listings: this.props.listingData.listings
     }
     handleCatMenu = () => {
         this.setState({
@@ -29,7 +30,9 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAllListings()
+
+            this.props.fetchAllListings()
+
         window.addEventListener('resize', () => {
             this.setState({
                 browserWidth: window.innerWidth
@@ -37,13 +40,16 @@ class Main extends React.Component {
         })
     }
 
-
-
     render() {
         console.log("rendered")
+        console.log(this.state)
         const listings = this.props.listingData.listings
-        console.log(listings);
         const {browserWidth} = this.state.browserWidth
+        const mapListings = listings.map(listing => {
+                return (
+                    <ItemListing key={uuid()} {...listing}/>
+                )
+            })
         return (
             <div className="home">
                 <div className="home__inner-container container">
@@ -140,11 +146,7 @@ class Main extends React.Component {
                                 you</p>
                         </section>
                         <section className="content__listings">
-                            {listings.map(listing => {
-                                return (
-                                    <ItemListing key={uuid()} {...listing}/>
-                                )
-                            })}
+                            {mapListings}
                         </section>
                     </div>
 

@@ -6,7 +6,6 @@ import avatar from "../../assets/images/cloudStrife.png";
 function NavMenu(props) {
 
     const {authenticated, authenticatedUser} = props.auth
-    console.log(props)
 
     return (
             <>
@@ -16,12 +15,12 @@ function NavMenu(props) {
                 {/*todo - only display if the user is logged in*/}
                 <div className="header__nav-menu-user">
                     <div className="header__nav-menu-user-avatar-wrapper">
-                        <img className={'header__nav-menu-user-avatar-image'} src={authenticatedUser.imageUrl} alt=""/>
+                        <img className={'header__nav-menu-user-avatar-image'} src={ authenticatedUser && authenticatedUser.imageUrl} alt=""/>
                     </div>
                     <p className={'header__nav-menu-user-greeting'}>
                         {authenticated ?`Hi ${authenticatedUser.firstName}!` : 'Not Logged In'}
                         {authenticated && (
-                            <span className={'header__nav-menu-user-log-out'} >(Log out)</span>
+                            <span className={'header__nav-menu-user-log-out'} onClick={props.userLogout}>(Log out)</span>
                         )}
                     </p>
                     {authenticated && (
@@ -36,7 +35,7 @@ function NavMenu(props) {
                 {/**/}
 
                 <ul className={'header__nav-menu-link-list'}>
-                    <li className={`header__nav-menu-link-item ${authenticated && 'header__nav-menu-link-item--authenticated'}`} >Sign up</li>
+                    <li className={`header__nav-menu-link-item ${authenticated && 'header__nav-menu-link-item--authenticated'}`} onClick={props.toggleSignup}>Sign up</li>
                     {!authenticated && (
                         <li className={'header__nav-menu-link-item'} onClick={props.toggleLogin}>Log in</li>
                     )}
