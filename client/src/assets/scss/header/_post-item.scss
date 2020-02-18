@@ -1,45 +1,54 @@
 @import '../queryMixins';
 
-.post-item{
+.post-item {
   position: absolute;
   top: 0;
   z-index: 10000;
   background-color: #687F9E;
   height: 100vh;
   width: 100%;
-  .container{
+
+  .container {
     position: relative;
     margin-top: 25%;
   }
-  &__close{
+
+  &__close {
     position: absolute;
     top: 60px;
     left: 10px;
   }
-  &__header{
+
+  &__header {
     color: white;
     text-align: center;
   }
-  &__sub-header{
+
+  &__sub-header {
     color: white;
     text-align: center;
   }
-  &__form-row-1{
+
+  &__form-row-1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
-  &__form-title{
+
+  &__form-title {
     margin-top: 28px;
     width: 100%;
     margin-bottom: 7px;
     height: 30px;
   }
-  &__form-title-label{
+
+  &__form-title-label {
     color: white;
     padding-bottom: 5px;
   }
-  &__form-title-input{
+
+  &__form-title-input {
     width: 100%;
     border: none;
     border-radius: 3px;
@@ -48,25 +57,29 @@
     font-size: 18px;
     padding-left: 5px;
   }
-  &__form-row-2{
+
+  &__form-row-2 {
     display: flex;
     justify-content: center;
   }
-  &__form-category{
+
+  &__form-category {
     margin-top: 28px;
     margin-right: 5px;
     height: 30px;
   }
-  &__form-category-label{
+
+  &__form-category-label {
     color: white;
     padding-bottom: 5px;
   }
 
-  &__form-category-input{
+  &__form-category-input {
     height: inherit;
     font-size: 18px;
   }
-  &__form-image{
+
+  &__form-image {
     margin-top: 28px;
 
     width: 100%;
@@ -74,11 +87,13 @@
     margin-bottom: 7px;
 
   }
-  &__form-image-label{
+
+  &__form-image-label {
     color: white;
     padding-bottom: 5px;
   }
-  &__form-image-input{
+
+  &__form-image-input {
     width: 100%;
     height: inherit;
     border: none;
@@ -87,11 +102,13 @@
     font-size: 18px;
     padding-left: 5px;
   }
-  &__form-row-3{
+
+  &__form-row-3 {
     display: flex;
     justify-content: center;
   }
-  &__form-items-wanted{
+
+  &__form-items-wanted {
     margin-top: 28px;
 
     width: 100%;
@@ -100,11 +117,13 @@
     margin-right: 5px;
 
   }
-  &__form-items-wanted-label{
+
+  &__form-items-wanted-label {
     color: white;
     padding-bottom: 5px;
   }
-  &__form-items-wanted-input{
+
+  &__form-items-wanted-input {
     width: 100%;
     height: inherit;
     border: none;
@@ -113,7 +132,8 @@
     font-size: 18px;
     padding-left: 5px;
   }
-  &__form-price{
+
+  &__form-price {
     margin-top: 28px;
 
     width: 65%;
@@ -121,11 +141,13 @@
     margin-bottom: 7px;
 
   }
-  &__form-price-label{
+
+  &__form-price-label {
     color: white;
     padding-bottom: 5px;
   }
-  &__form-price-input{
+
+  &__form-price-input {
     width: 100%;
     height: inherit;
     border: none;
@@ -134,13 +156,14 @@
     font-size: 18px;
     padding-left: 5px;
   }
-  &__form-row-4{
+
+  &__form-row-4 {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  &__form-description{
+  &__form-description {
     margin-top: 28px;
 
     width: 100%;
@@ -149,13 +172,15 @@
     margin-bottom: 7px;
 
   }
-  &__form-description-label{
+
+  &__form-description-label {
     color: white;
     padding-bottom: 5px;
   }
-  &__form-description-input{
+
+  &__form-description-input {
     padding-top: 10px;
-    resize:none;
+    resize: none;
     font-size: 18px;
     padding-left: 5px;
     width: 100%;
@@ -163,7 +188,8 @@
     border-radius: 3px;
     border: 1px solid #687F9E;
   }
-  &__form-submit{
+
+  &__form-submit {
     border: 1px solid #687F9E;
     border-radius: 10px;
     color: #687F9E;
@@ -171,7 +197,8 @@
     width: 30%;
     text-align: center;
     background-color: white;
-    &:hover{
+
+    &:hover {
 
 
       cursor: grab;
@@ -180,8 +207,9 @@
     }
   }
 }
-@include responsive($tablet-landscape){
-  .post-item__overlay{
+
+@include responsive($tablet-landscape) {
+  .post-item__overlay {
     position: absolute;
     top: 0;
     height: 100vh;
@@ -190,16 +218,19 @@
     opacity: .08;
     z-index: 10000;
   }
-  .post-item{
+  .post-item {
     border-radius: 10px;
     top: 10%;
-    left: 25%;
-   height: 600px;
-    width: 500px;
-    .container{
+    left: 25vw;
+    height: auto;
+    width: 50%;
+    padding-bottom: 15px;
+    .container {
       margin-top: 5%;
+      max-width: 95%;
     }
-    &__close{
+
+    &__close {
       display: none;
     }
 

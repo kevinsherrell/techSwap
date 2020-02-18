@@ -1041,7 +1041,8 @@
   .post-item__form-row-1 {
     display: flex;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    width: 100%; }
   .post-item__form-title {
     margin-top: 28px;
     width: 100%;
@@ -1168,11 +1169,13 @@
   .post-item {
     border-radius: 10px;
     top: 10%;
-    left: 25%;
-    height: 600px;
-    width: 500px; }
+    left: 25vw;
+    height: auto;
+    width: 50%;
+    padding-bottom: 15px; }
     .post-item .container {
-      margin-top: 5%; }
+      margin-top: 5%;
+      max-width: 95%; }
     .post-item__close {
       display: none; } }
 
