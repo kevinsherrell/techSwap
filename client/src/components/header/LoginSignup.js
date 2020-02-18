@@ -43,11 +43,13 @@ class LoginSignup extends React.Component {
     render() {
         console.log(this.state);
         return (
-
+            <>
+                <div className="login-signup__overlay" onClick={this.props.toggleLoginSignup}></div>
             <div className="login-signup">
+                <i className="material-icons login-signup__close-icon"
+                   onClick={this.props.toggleLoginSignup}>close</i>
                 <div className="container">
-                    <i className="material-icons login-signup__close-icon"
-                       onClick={this.props.toggleLoginSignup}>close</i>
+
                     <h3 className="login-signup__logo">trad'r</h3>
                     <h4 className="login-signup__sub-header">The #1 online bartering platform</h4>
 
@@ -119,6 +121,7 @@ class LoginSignup extends React.Component {
 
                 </div>
             </div>
+                </>
         )
     }
 }
