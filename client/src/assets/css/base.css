@@ -156,7 +156,10 @@
     width: 100%; }
   .header__logged-out-signup {
     display: flex;
+    justify-content: center;
     padding: 5px;
+    margin-left: 10px;
+    width: 50%;
     border: 1px solid #687F9E;
     border-radius: 5px;
     color: #687F9E; }
@@ -166,7 +169,9 @@
       cursor: grab; }
   .header__logged-out-login {
     display: flex;
+    justify-content: center;
     padding: 5px;
+    width: 50%;
     border: 1px solid #687F9E;
     border-radius: 5px;
     color: #687F9E;
