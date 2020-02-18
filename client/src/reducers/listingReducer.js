@@ -4,8 +4,7 @@ const initialState={
     listings: [],
     listingPage: {},
     listingPageUser: {},
-    listingError: {},
-    successMessage: ""
+    listingError: {}
 }
 
 export default function(state = initialState, action){
@@ -35,7 +34,7 @@ export default function(state = initialState, action){
             console.log("CREATE LISTING")
             return{
                 ...state,
-                successMessage: "successful"
+                listings: [action.payload, ...state.listings]
             }
         case DELETE_LISTING:
             console.log("DELETE_LISTING")
