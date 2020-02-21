@@ -12,6 +12,7 @@ import store from './store'
 
 function App() {
     return (
+        // Testing git
         <Provider store={store}>
                 <div className="App">
                     <Header/>
