@@ -20,7 +20,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 @CrossOrigin
-public  class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -40,11 +40,11 @@ public  class User {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToMany(fetch = FetchType.EAGER,targetEntity = Listing.class, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Listing.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "user")
     private List<Listing> listing;
 
-    @OneToMany(fetch= FetchType.EAGER, targetEntity = Message.class)
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Message.class)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn(name = "receiver")
     private List<Message> messagesReceived;
@@ -60,11 +60,15 @@ public  class User {
     private Date date_updated;
 
     @PrePersist
-    protected void onCreate() { this.date_created = new Date(); }
+    protected void onCreate() {
+        this.date_created = new Date();
+    }
 
 
     @PreUpdate
-    protected void onUpdate(){ this.date_updated = new Date(); }
+    protected void onUpdate() {
+        this.date_updated = new Date();
+    }
 
     public User() {
     }
