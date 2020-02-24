@@ -7,6 +7,7 @@ import com.ksherrell.tradr.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,17 +18,25 @@ public class ListingService {
     UserRepository userRepository;
     @Autowired
     ImageRepository imageRepository;
+
     public Listing saveOrUpdateListing(Listing listing) {
-            User user = userRepository.getById(listing.getUser());
-            listing.setLocation(user.getZipCode());
-            return listingRepository.save(listing);
+        User user = userRepository.getById(listing.getUser());
+        listing.setLocation(user.getZipCode());
+        return listingRepository.save(listing);
     }
 
-    public Iterable<Listing> findAllListings(){
+    public Iterable<Listing> findAllListings() {
         return listingRepository.findAll();
     }
-    public Optional<Listing> findListingById(Long id){
+
+    public List<Listing> findAllListingsByCategory(String category){
+        return listingRepository.findAllByCategory(category);
+    }
+    public Optional<Listing> findListingById(Long id) {
         return listingRepository.findById(id);
     }
-    public void deleteListingById(Long id){ listingRepository.deleteById(id);}
-        }
+
+    public void deleteListingById(Long id) {
+        listingRepository.deleteById(id);
+    }
+}

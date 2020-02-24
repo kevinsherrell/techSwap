@@ -1,18 +1,10 @@
-import React, {useEffect} from 'react';
-import axios from 'axios'
-import {withRouter} from 'react-router-dom'
+import React from 'react';
 import {connect} from 'react-redux'
-import {useState, useContext} from 'react'
-import ListAnItem from "../mainPage/ListAnItem";
 import ItemListing from "../mainPage/ItemListing";
-import {DataContext, withData} from "../../context/dataProvider";
 import image from '../../assets/images/listing-pic.jpg'
-import cloud from '../../assets/images/cloudStrife.png'
-import g7 from '../../assets/images/g7.jpg'
 import map from '../../assets/images/storelocator_clothing.png'
 import {deleteListing} from "../../actions/listingActions";
 
-// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class ListingPage extends React.Component {
     constructor(props) {
@@ -42,56 +34,21 @@ class ListingPage extends React.Component {
             })
         }
     }
-    // getUserById = () => {
-    //     console.log(this.props)
-    //     axios.get(`http://localhost:8080/api/user/${this.state.listingPageData.user}`)
-    //         .then(response => {
-    //             this.setState({
-    //                 user: response.data
-    //             })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
-
-    // id = this.props.listingPageData.user
-
-    // static getDerivedStateFromProps(props,state){
-    //     if(props !== state){
-    //         return {
-    //             ...props
-    //         }
-    //     }
-    // }
 
 
     deleteListing = (id, history) => {
         id = this.props.listingData.listingPage.id
         history = this.props.history
         if (this.props.auth.authenticatedUser && this.props.auth.authenticatedUser.id === this.props.listingData.listingPage.user) {
-            this.props.deleteListing(id,history)
+            this.props.deleteListing(id, history)
         }
 
     }
 
-    // id = this.props.listingPageData.id
-
-    // this.props.authenticatedUser && this.props.authenticatedUser.id === this.props.listingPageData.user
-    // this.props.history.push("/")
-
-    componentDidMount() {
-        // console.log(this.props.user)
-    }
-
-    componentDidUpdate() {
-        // console.log(this.props.user)
-
-    }
 
     render() {
 
-        const {listings,listingPage,listingPageUser} = this.props.listingData
+        const {listings, listingPage, listingPageUser} = this.props.listingData
         const {authenticatedUser} = this.props.auth
         return (
             <div className="listing-page">
@@ -105,7 +62,7 @@ class ListingPage extends React.Component {
                                  src={`${listingPage && listingPage.imageUrl}`}
                                  alt=""/>
 
-                            <p className={'listing-page__price-btn'}>{listingPage.price < 1 ? "Trade Only": `Trade + $${listingPage.price}`}</p>
+                            <p className={'listing-page__price-btn'}>{listingPage.price < 1 ? "Trade Only" : `Trade + $${listingPage.price}`}</p>
                             <p className={'listing-page__photo-btn'}>View photos (5)</p>
 
 
@@ -131,10 +88,10 @@ class ListingPage extends React.Component {
                             <h4 className={'listing-page__wanted-header'}>Will trade for:</h4>
                             <p className={'listing-page__wanted'}>{listingPage.itemsWanted}</p>
 
-                            { authenticatedUser && authenticatedUser.id === listingPage.user ? (
+                            {authenticatedUser && authenticatedUser.id === listingPage.user ? (
                                 <p className="listing-page__delete" onClick={this.deleteListing}>Delete This Post</p>
 
-                            ):null}
+                            ) : null}
                         </section>
                     </div>
                     <div className="listing-page__contact-section">
@@ -170,9 +127,9 @@ class ListingPage extends React.Component {
         )
     }
 }
-const mapStateToProps = state =>({
+
+const mapStateToProps = state => ({
     auth: state.auth,
     listingData: state.listingData
 })
-export default connect(mapStateToProps,{deleteListing})(ListingPage);
-// export default ListingPage;
+export default connect(mapStateToProps, {deleteListing})(ListingPage);

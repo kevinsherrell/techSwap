@@ -1,4 +1,12 @@
-import {FETCH_ALL_LISTINGS, FETCH_LISTING_BY_ID, CREATE_LISTING, FETCH_USER_BY_ID,DELETE_LISTING,DELETE_LISTING_ERROR} from "../actions/types";
+import {
+    FETCH_ALL_LISTINGS,
+    FETCH_LISTING_BY_ID,
+    CREATE_LISTING,
+    FETCH_USER_BY_ID,
+    DELETE_LISTING,
+    DELETE_LISTING_ERROR,
+    FETCH_ALL_LISTINGS_BY_CATEGORY, FETCH_ALL_LISTINGS_BY_CATEGORY_ERROR
+} from "../actions/types";
 
 const initialState={
     listings: [],
@@ -15,6 +23,20 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 listings: action.payload
+            }
+        case FETCH_ALL_LISTINGS_BY_CATEGORY:
+            console.log("FETCH_ALL_LISTINGS_BY_CATEGORY")
+            console.log(action)
+            return {
+                ...state,
+                listings: action.payload
+            }
+        case FETCH_ALL_LISTINGS_BY_CATEGORY_ERROR:
+            console.log("FETCH_ALL_LISTINGS_BY_CATEGORY_ERROR")
+            console.log(action)
+            return {
+                ...state,
+                listingError: action.payload
             }
         case FETCH_LISTING_BY_ID:
             console.log('FETCH_LISTING_BY_ID')

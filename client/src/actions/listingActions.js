@@ -1,5 +1,7 @@
 import {
     FETCH_ALL_LISTINGS,
+    FETCH_ALL_LISTINGS_BY_CATEGORY,
+    FETCH_ALL_LISTINGS_BY_CATEGORY_ERROR,
     FETCH_LISTING_BY_ID,
     CREATE_LISTING,
     FETCH_USER_BY_ID,
@@ -19,6 +21,17 @@ export const fetchAllListings = () => dispatch => {
         .catch(err => {
             console.log(err)
         })
+}
+export const fetchAllListingsByCategory = (category)=> dispatch => {
+    axios.get(`http://localhost:8080/api/listing?category=${category}`)
+        .then(response=>dispatch({
+            type: FETCH_ALL_LISTINGS_BY_CATEGORY,
+            payload: response.data
+        }))
+        .catch(err => dispatch({
+            type: FETCH_ALL_LISTINGS_BY_CATEGORY_ERROR,
+            payload: err.response.data
+        }))
 }
 export const postListing = (listingData) => dispatch => {
     console.log("create listing")

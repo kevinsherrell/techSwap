@@ -6,6 +6,7 @@ import com.ksherrell.tradr.user.UserService;
 import com.ksherrell.tradr.validation.ValidationErrorService;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -42,7 +43,10 @@ public class ListingController {
         return listingService.findAllListings();
     }
 
-    ;
+    @GetMapping("")
+    public List<Listing> getAllListingsByCategory(@RequestParam(name="category") String category){
+        return listingService.findAllListingsByCategory(category);
+    }
 
     @GetMapping("/{id}")
     public Optional<Listing> getListingById(@PathVariable Long id) {
