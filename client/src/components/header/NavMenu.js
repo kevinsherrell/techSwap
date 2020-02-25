@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
+
 import {userLogin,userLogout} from "../../actions/authActions";
-import avatar from "../../assets/images/cloudStrife.png";
 
 function NavMenu(props) {
 

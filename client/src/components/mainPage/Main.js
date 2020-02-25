@@ -1,13 +1,12 @@
 import React from 'react';
-
 import {connect} from 'react-redux'
-import {fetchAllListings, fetchAllListingsByCategory} from "../../actions/listingActions";
 
-import uuid from 'uuid'
 import ListAnItem from "./ListAnItem";
 import ItemListing from "./ItemListing";
-import PropTypes from 'prop-types'
 import PostItem from "./PostItem";
+
+import {fetchAllListings, fetchAllListingsByCategory} from "../../actions/listingActions";
+import uuid from 'uuid';
 
 
 class Main extends React.Component {
@@ -100,37 +99,37 @@ class Main extends React.Component {
                             </li>
                         </ul>
                         <form className="sidebar__update-form">
-                            <h4 className={'sidebar__update-form-condition-header'}>Condition: </h4>
-                            <ul className={'sidebar__update-form-condition-list'}>
-                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio"
-                                                                                                  name={'condition'}
-                                                                                                  value={'new'}
-                                                                                                  className={'sidebar__update-form-condition-list-input'}/> New
-                                </li>
-                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio"
-                                                                                                  name={'condition'}
-                                                                                                  value={'used'}
-                                                                                                  className={'sidebar__update-form-condition-list-input'}/> Used
-                                </li>
-                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio"
-                                                                                                  name={'condition'}
-                                                                                                  value={'damaged'}
-                                                                                                  className={'sidebar__update-form-condition-list-input'}/> Damaged
-                                </li>
-                                <li className={'sidebar__update-form-condition-list-item'}><input type="radio"
-                                                                                                  name={'condition'}
-                                                                                                  value={'broken'}
-                                                                                                  className={'sidebar__update-form-condition-list-input'}/> Broken
-                                </li>
-                            </ul>
+                            {/*<h4 className={'sidebar__update-form-condition-header'}>Condition: </h4>*/}
+                            {/*<ul className={'sidebar__update-form-condition-list'}>*/}
+                            {/*    <li className={'sidebar__update-form-condition-list-item'}><input type="radio"*/}
+                            {/*                                                                      name={'condition'}*/}
+                            {/*                                                                      value={'new'}*/}
+                            {/*                                                                      className={'sidebar__update-form-condition-list-input'}/> New*/}
+                            {/*    </li>*/}
+                            {/*    <li className={'sidebar__update-form-condition-list-item'}><input type="radio"*/}
+                            {/*                                                                      name={'condition'}*/}
+                            {/*                                                                      value={'used'}*/}
+                            {/*                                                                      className={'sidebar__update-form-condition-list-input'}/> Used*/}
+                            {/*    </li>*/}
+                            {/*    <li className={'sidebar__update-form-condition-list-item'}><input type="radio"*/}
+                            {/*                                                                      name={'condition'}*/}
+                            {/*                                                                      value={'damaged'}*/}
+                            {/*                                                                      className={'sidebar__update-form-condition-list-input'}/> Damaged*/}
+                            {/*    </li>*/}
+                            {/*    <li className={'sidebar__update-form-condition-list-item'}><input type="radio"*/}
+                            {/*                                                                      name={'condition'}*/}
+                            {/*                                                                      value={'broken'}*/}
+                            {/*                                                                      className={'sidebar__update-form-condition-list-input'}/> Broken*/}
+                            {/*    </li>*/}
+                            {/*</ul>*/}
 
-                            <h4 className={'sidebar__update-form-price-header'}>Price: </h4>
-                            <div className="sidebar__update-form-price-wrapper">
-                                <input type="text" placeholder={'min'}
-                                       className={'sidebar__update-form-price-input'}/> To <input type="text"
-                                                                                                  placeholder={'max'}
-                                                                                                  className={'sidebar__update-form-price-input'}/>
-                            </div>
+                            {/*<h4 className={'sidebar__update-form-price-header'}>Price: </h4>*/}
+                            {/*<div className="sidebar__update-form-price-wrapper">*/}
+                            {/*    <input type="text" placeholder={'min'}*/}
+                            {/*           className={'sidebar__update-form-price-input'}/> To <input type="text"*/}
+                            {/*                                                                      placeholder={'max'}*/}
+                            {/*                                                                      className={'sidebar__update-form-price-input'}/>*/}
+                            {/*</div>*/}
 
                             <h4 className={'sidebar__update-form-distance-header'}>Miles (from your location): </h4>
                             <div className="sidebar__update-form-distance-wrapper">

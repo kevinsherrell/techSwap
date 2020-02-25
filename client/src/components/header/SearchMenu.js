@@ -1,4 +1,5 @@
 import React from 'react';
+
 import search from "../../assets/images/search.png";
 import location from "../../assets/images/location.png";
 
@@ -30,16 +31,16 @@ function SearchMenu(props) {
                         </button>
                     </div>
                     <div className={`header__search-menu-filter-options ${!props.searchMenuFilter && "hidden"}`}>
-                        <div className="header__search-menu-price-outer-wrapper">
-                            <label className={'header__search-menu-price-label'}>Price</label>
-                            <div className={"header__search-menu-price-inner-wrapper"}>
-                                $<input className={'header__search-menu-price-input'} type="number" max={"999"}
-                                        placeholder={"Min"}/>
-                                {/*<p>To</p>*/}
-                                $<input className={'header__search-menu-price-input'} type="number" max={"999"}
-                                        placeholder={"Max"}/>
-                            </div>
-                        </div>
+                        {/*<div className="header__search-menu-price-outer-wrapper">*/}
+                        {/*    <label className={'header__search-menu-price-label'}>Price</label>*/}
+                        {/*    <div className={"header__search-menu-price-inner-wrapper"}>*/}
+                        {/*        $<input className={'header__search-menu-price-input'} type="number" max={"999"}*/}
+                        {/*                placeholder={"Min"}/>*/}
+                        {/*        /!*<p>To</p>*!/*/}
+                        {/*        $<input className={'header__search-menu-price-input'} type="number" max={"999"}*/}
+                        {/*                placeholder={"Max"}/>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="header__search-menu-distance-outer-wrapper">
                             <label className={'header__search-menu-distance-label'}>Distance</label>
                             <div className="header__search-menu-distance-inner-wrapper">

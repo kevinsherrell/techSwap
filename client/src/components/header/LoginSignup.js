@@ -1,8 +1,8 @@
 import React from 'react'
-import Axios from 'axios'
-import {withData} from "../../context/dataProvider";
-import {userLogin,userSignup} from "../../actions/authActions";
 import {connect} from 'react-redux'
+
+import {userLogin,userSignup} from "../../actions/authActions";
+
 class LoginSignup extends React.Component {
     state = {
         signup: false,

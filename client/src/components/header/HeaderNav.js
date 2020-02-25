@@ -1,9 +1,9 @@
 import React from 'react';
-import search from "../../assets/images/search.png";
-import location from "../../assets/images/location.png";
-import avatar from "../../assets/images/cloudStrife.png";
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
+
+import location from "../../assets/images/location.png";
+import search from "../../assets/images/search.png";
 
 const HeaderNav = (props) => {
 

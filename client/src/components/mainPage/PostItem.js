@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+
 import {postListing} from "../../actions/listingActions";
 
 class PostItem extends Component {
@@ -20,16 +21,18 @@ class PostItem extends Component {
         )
     }
     onChange = (e) => {
+        console.log(this.state.price)
         this.setState({
             [e.target.name]: e.target.value
         }, () => console.log(this.state))
+
     }
     onSubmit = (e) => {
         e.preventDefault();
         let listingData = {
             user: this.state.user,
             title: this.state.title,
-            tradeOnly: this.state.price > 1 ? true : false,
+            tradeOnly: this.state.price > 0 ? false : true,
             price: this.state.price,
             category: this.state.category,
             itemsWanted: this.state.itemsWanted,

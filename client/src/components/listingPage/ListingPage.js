@@ -1,9 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
+
 import ItemListing from "../mainPage/ItemListing";
+
+import {deleteListing} from "../../actions/listingActions";
+
 import image from '../../assets/images/listing-pic.jpg'
 import map from '../../assets/images/storelocator_clothing.png'
-import {deleteListing} from "../../actions/listingActions";
 
 
 class ListingPage extends React.Component {
@@ -78,7 +81,7 @@ class ListingPage extends React.Component {
                                          src={listingPageUser && listingPageUser.imageUrl} alt=""/>
                                 </div>
                             </div>
-                            <h4 className={'listing-page__title'}></h4>
+                            <h4 className={'listing-page__title'}>{listingPage.title}</h4>
                             {/*<p>Trade + $250</p>*/}
                             {/*<p className={'listing-page__location'}>{location}</p>*/}
                             <h4 className={'listing-page__description-header'}>Description:</h4>
