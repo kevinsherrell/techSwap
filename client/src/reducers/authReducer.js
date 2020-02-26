@@ -1,22 +1,18 @@
 import {
-    FETCH_ALL_LISTINGS,
-    FETCH_LISTING_BY_ID,
-    CREATE_LISTING,
-    FETCH_USER_BY_ID,
     LOGIN_USER,
     SIGNUP_USER, LOGIN_ERROR, SIGNUP_ERROR, LOGOUT_USER
 } from "../actions/types";
 
-const initialState={
+const initialState = {
     authenticated: false,
     authenticatedUser: {},
     authError: {}
 }
 
-export default function(state = initialState, action){
+export default function (state = initialState, action) {
     console.log(action)
 
-    switch(action.type){
+    switch (action.type) {
         case LOGIN_USER:
             return {
                 ...state,
@@ -31,19 +27,19 @@ export default function(state = initialState, action){
             }
         case LOGOUT_USER:
             console.log("LOGOUT_USER")
-            return{
+            return {
                 ...state,
                 authenticated: false,
                 authenticatedUser: undefined
             }
         case SIGNUP_USER:
-            return{
+            return {
                 ...state,
                 authenticated: true,
                 authError: action.payload
             }
         case SIGNUP_ERROR:
-            return{
+            return {
                 ...state,
                 authenticated: false,
                 authError: action.payload

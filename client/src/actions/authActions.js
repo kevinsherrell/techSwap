@@ -8,6 +8,7 @@ export const userSignup = (signupData, closeMenu) => dispatch => {
                 type: SIGNUP_USER,
                 payload: response.data
             })
+            // if there are no errors the menu closes
             closeMenu();
         })
         .catch(error => dispatch({
@@ -22,6 +23,7 @@ export const userLogin = (loginData, closeMenu) => dispatch => {
                     type: LOGIN_USER,
                     payload: response.data
                 })
+                // if there are no errors the menu closes
                 closeMenu();
             }
         )
