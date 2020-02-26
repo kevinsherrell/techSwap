@@ -19,12 +19,13 @@ class LoginSignup extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     };
 
-    onSubmitLogin = (e) => {
+    onSubmitLogin = (e, closeMenu) => {
         let loginData = {
             email: this.state.email,
             password: this.state.password
         }
-        this.props.userLogin(loginData)
+        closeMenu = this.props.toggleLoginSignup;
+        this.props.userLogin(loginData, closeMenu)
     }
 
     onSubmitSignup = (e) => {
