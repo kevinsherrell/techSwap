@@ -1,12 +1,15 @@
 import {LOGIN_ERROR, LOGIN_USER, LOGOUT_USER, SIGNUP_ERROR, SIGNUP_USER} from "./types";
 import axios from "axios";
 
-export const userSignup = (signupData) => dispatch => {
+export const userSignup = (signupData, closeMenu) => dispatch => {
     axios.post("http://localhost:8080/api/user", signupData)
-        .then(response => dispatch({
-            type: SIGNUP_USER,
-            payload: response.data
-        }))
+        .then(response => {
+            dispatch({
+                type: SIGNUP_USER,
+                payload: response.data
+            })
+            closeMenu();
+        })
         .catch(error => dispatch({
             type: SIGNUP_ERROR,
             payload: error.response.data

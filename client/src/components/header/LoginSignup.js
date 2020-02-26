@@ -28,7 +28,7 @@ class LoginSignup extends React.Component {
         this.props.userLogin(loginData, closeMenu)
     }
 
-    onSubmitSignup = (e) => {
+    onSubmitSignup = (e, closeMenu) => {
         let signupData = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -38,7 +38,8 @@ class LoginSignup extends React.Component {
             zipCode: this.state.location,
             imageUrl: "https://source.unsplash.com/random/300×300"
         }
-        this.props.userSignup(signupData)
+        closeMenu = this.props.toggleLoginSignup;
+        this.props.userSignup(signupData, closeMenu);
     }
 
     render() {
